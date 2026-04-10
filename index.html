@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>甜瓜群组官网-MELON GROUP</title>
+    <meta name="description" content="《Melon Sandbox》游戏群组，专注于内容讨论、资源共享与技术交流等!" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#5a4bd6',
+                        'brand-primary': '#6c5ce7',
+                        'brand-cyan': '#00cec9',
+                        'brand-light': '#9c88ff',
+                        'footer-bg': '#1a1a2e',
+                        'counter-bg': '#1e1e3a',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'Poppins', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer components {
+            .hard-shadow {
+                box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.9);
+            }
+            .hard-shadow-brand {
+                box-shadow: 4px 4px 0px 0px #5a4bd6;
+            }
+            .hard-shadow-cyan {
+                box-shadow: 4px 4px 0px 0px #00cec9;
+            }
+            .hard-shadow-sm {
+                box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.9);
+            }
+            
+            .btn-hard {
+                @apply border-2 border-gray-900 px-6 py-2.5 font-bold transition-all duration-150 relative inline-block hard-shadow-sm active:translate-x-0.5 active:translate-y-0.5 active:shadow-none;
+            }
+            
+            .product-card {
+                @apply border-2 border-gray-900 bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:hard-shadow-brand;
+            }
+
+            .background-pattern {
+                background-image: linear-gradient(to right,#80808012 1px,transparent 1px),linear-gradient(to bottom,#80808012 1px,transparent 1px);
+                background-size: 24px 24px;
+            }
+        }
+        
+        ::selection {
+            background-color: #9c88ff; 
+            color: #1a1a2e;
+        }
+
+        .text-shadow-cyan {
+            text-shadow: 4px 4px 0px #00cec9;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            border: 2px solid #1a1a2e;
+            padding: 24px;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 4px 4px 0px 0px #5a4bd6;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-white text-gray-900 font-sans selection:bg-brand-light selection:text-gray-900">
+
+    <div class="modal-overlay" id="joinModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900 i18n" data-i18n="join_group_title">加入群组</h3>
+            <div class="flex flex-col gap-3">
+                <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=wTnC7CeJNctwbnKDdsyumlI%2FEdtVEPubIHca46Zoouk03HI3ad1axArPdCA0vu4e&busi_data=eyJncm91cENvZGUiOiIxMDEzMDQxOTIzIiwidG9rZW4iOiJMNlFDeGJqa3pwUjVGQVU0TU9jV1AzN3hhRlBxSlQ4SEFSOVNjMTNZZ1NtRGtTRjhFVTBXQ0pGZ3VBYUxsTWVlIiwidWluIjoiMzE3NzQzNzMzMCJ9&data=AVV3gZuLEIAj8jWaQxzNVAnze36lpW37c1U0iHz57QNnyjfncvDsRgfgx1SPM9sPk_V17_ia3Gy2JPhdy1hFPA&svctype=4&tempid=h5_group_info" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
+                    <i class="fab fa-qq mr-2"></i> <span class="i18n" data-i18n="join_qq_group">加入QQ群</span>
+                </a>
+                <a href="https://pd.qq.com/s/5thhxg0eg?b=9" target="_blank" class="btn-hard bg-brand-cyan text-white hover:bg-brand-cyan/90 text-center">
+                    <i class="fas fa-users mr-2"></i> <span class="i18n" data-i18n="join_qq_channel">加入QQ频道</span>
+                </a>
+                <button onclick="closeModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900 i18n" data-i18n="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-50 border-b-2 border-gray-900 bg-white/95 backdrop-blur-sm">
+        <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <span class="-m-1.5 p-1.5 text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default">
+                    甜瓜群组_MG
+                </span>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-10">
+                <a href="#about" class="text-sm font-bold text-gray-900 hover:text-brand-primary hover:underline decoration-2 underline-offset-4 transition-all i18n" data-i18n="nav_about">关于我们</a>
+                <a href="#services" class="text-sm font-bold text-gray-900 hover:text-brand-primary hover:underline decoration-2 underline-offset-4 transition-all i18n" data-i18n="nav_services">服务</a>
+            </div>
+            <div class="flex lg:flex-1 lg:justify-end gap-x-4">
+                <button id="langToggle" class="inline-block border-2 border-gray-900 bg-brand-dark px-3 py-1 text-xs font-bold text-white font-mono uppercase shadow-[2px_2px_0px_0px_#00cec9] hover:bg-gray-900 transition-colors">
+                    [ JP ]
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="relative isolate px-6 lg:px-8 bg-gray-50 background-pattern border-b-2 border-gray-900">
+            <div class="relative mx-auto max-w-4xl py-24 sm:py-32 lg:py-40 text-center">
+                <div class="mb-8 flex justify-center" data-aos="fade-down">
+                    <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide i18n" data-i18n="founded">
+                        成立于2025年2月2日
+                    </div>
+                </div>
+                <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase" data-aos="fade-up">
+                    <span class="text-brand-dark i18n" data-i18n="hero_line2">《MELON SANDBOX》游戏群组</span>
+                </h1>
+                <p class="mt-8 text-lg font-medium text-gray-700 sm:text-xl leading-8 max-w-2xl mx-auto border-l-4 border-brand-cyan pl-6 text-left bg-white p-6 hard-shadow-brand" data-aos="fade-up" data-aos-delay="100">
+                    <span class="i18n" data-i18n="hero_desc">甜瓜群组为糖豆(GW)建立的《Melon Sandbox》游戏群组，专注于内容讨论、资源共享与技术交流等!</span>
+                </p>
+                <div class="mt-12 flex items-center justify-center gap-x-6" data-aos="fade-up" data-aos-delay="200">
+                    <button onclick="openJoinModal()" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90">
+                        <i class="fas fa-user-plus mr-2"></i> <span class="i18n" data-i18n="join_group_btn">加入群组</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="bg-white py-24 sm:py-32 border-b-2 border-gray-900">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan i18n" data-i18n="services_label">[ Melon group ]</h2>
+                    <p class="mt-2 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl font-orbitron i18n" data-i18n="services_title">服务</p>
+                    <div class="h-1.5 w-20 bg-gray-900 mx-auto mt-6"></div>
+                </div>
+
+                <div class="flex justify-center">
+                    <div class="product-card flex flex-col max-w-md w-full" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center gap-x-4 mb-6">
+                            <div class="border-2 border-gray-900 p-3 bg-purple-50 text-brand-dark hard-shadow-sm">
+                                <i class="fas fa-cubes text-3xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-black tracking-tighter text-gray-900 font-orbitron">Melorce</h3>
+                        </div>
+                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide i18n" data-i18n="service_category">Melorce即甜瓜资源站，由群主建立</p>
+                        <div class="flex flex-wrap gap-2 mb-8 text-xs font-bold text-brand-primary">
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag1">资源获取</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag2">内容宣传</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag3">游戏教程</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag4">芯片生成</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag5">频道交流</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag6">甜瓜下载</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag7">糖豆AI</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag8">成员证制</span>
+                        </div>
+                        <a href="https://melonxs.icu/" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 hover:hard-shadow text-center mt-auto">
+                            <span class="i18n" data-i18n="visit_melorce">访问Melorce</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-50 background-pattern border-b-2 border-gray-900 relative">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-3xl text-center border-4 border-gray-900 p-10 bg-counter-bg text-white hard-shadow-cyan transform hover:-translate-y-1 transition-transform" data-aos="zoom-in">
+                    <h2 class="text-sm font-mono font-bold uppercase tracking-widest text-brand-cyan mb-4 i18n" data-i18n="member_count_label">
+                        [ 群组成员 ]
+                    </h2>
+                    <div class="text-6xl md:text-8xl font-black tracking-tighter font-orbitron mb-6 text-shadow-cyan" id="member-counter">
+                        0
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-footer-bg text-white border-t-4 border-brand-cyan">
+        <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="col-span-1 md:col-span-1">
+                <span class="text-2xl font-black tracking-tighter text-white uppercase font-orbitron cursor-default">
+                    甜瓜群组_MG
+                </span>
+                <p class="mt-4 text-sm text-gray-300 max-w-md i18n" data-i18n="footer_desc">
+                    合作伙伴:XS工作室
+                </p>
+            </div>
+            
+            <div class="col-span-1 md:col-span-2 grid grid-cols-1 gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-sm font-bold uppercase text-brand-cyan tracking-widest i18n" data-i18n="quick_links">快速链接</h3>
+                    <ul class="mt-4 space-y-3 text-sm">
+                        <li><a href="#about" class="text-gray-300 hover:text-white hover:underline i18n" data-i18n="nav_about">关于我们</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white hover:underline i18n" data-i18n="nav_services">服务</a></li>
+                        <li class="text-gray-300 mt-2">
+                            <span class="i18n" data-i18n="contact_email_label">联系邮箱：</span><a href="mailto:MeGr@foxmail.com" class="hover:text-white hover:underline font-mono">MeGr@foxmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8 border-t border-gray-700 flex flex-col items-center sm:flex-row sm:justify-between gap-4">
+            <p class="text-xs font-mono text-gray-400">
+                ©2026 甜瓜群组
+            </p>
+            <div class="flex gap-x-6 text-gray-400 text-lg">
+                <a href="mailto:MeGr@foxmail.com" class="hover:text-white transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        (function(){
+            const translations = {
+                zh: {
+                    nav_about: '关于我们',
+                    nav_services: '服务',
+                    founded: '成立于2025年2月2日',
+                    hero_line2: '《MELON SANDBOX》游戏群组',
+                    hero_desc: '甜瓜群组为糖豆(GW)建立的《Melon Sandbox》游戏群组，专注于内容讨论、资源共享与技术交流等!',
+                    join_group_btn: '加入群组',
+                    services_label: '[ Melon group ]',
+                    services_title: '服务',
+                    service_category: 'Melorce即甜瓜资源站，由群主建立',
+                    tag1: '资源获取',
+                    tag2: '内容宣传',
+                    tag3: '游戏教程',
+                    tag4: '芯片生成',
+                    tag5: '频道交流',
+                    tag6: '甜瓜下载',
+                    tag7: '糖豆AI',
+                    tag8: '成员证制',
+                    visit_melorce: '访问Melorce',
+                    member_count_label: '[ 群组成员 ]',
+                    footer_desc: '合作伙伴:XS工作室',
+                    quick_links: '快速链接',
+                    contact_email_label: '联系邮箱：',
+                    join_group_title: '加入群组',
+                    join_qq_group: '加入QQ群',
+                    join_qq_channel: '加入QQ频道',
+                    cancel: '取消'
+                },
+                ja: {
+                    nav_about: '私たちについて',
+                    nav_services: 'サービス',
+                    founded: '2025年2月2日設立',
+                    hero_line2: '『MELON SANDBOX』ゲームグループ',
+                    hero_desc: 'メロングループは糖豆(GW)が設立した『Melon Sandbox』ゲームコミュニティです。コンテンツ議論、リソース共有、技術交流に特化！',
+                    join_group_btn: 'グループ参加',
+                    services_label: '[ Melon group ]',
+                    services_title: 'サービス',
+                    service_category: 'Melorceはメロンリソースステーション、グループ主催',
+                    tag1: 'リソース取得',
+                    tag2: 'コンテンツ宣伝',
+                    tag3: 'ゲームチュートリアル',
+                    tag4: 'チップ生成',
+                    tag5: 'チャンネル交流',
+                    tag6: 'メロンダウンロード',
+                    tag7: '糖豆AI',
+                    tag8: 'メンバー証',
+                    visit_melorce: 'Melorceへ',
+                    member_count_label: '[ グループメンバー ]',
+                    footer_desc: 'パートナー:XS工作室',
+                    quick_links: 'クイックリンク',
+                    contact_email_label: '連絡先：',
+                    join_group_title: 'グループ参加',
+                    join_qq_group: 'QQグループ',
+                    join_qq_channel: 'QQチャンネル',
+                    cancel: 'キャンセル'
+                }
+            };
+
+            let currentLang = 'zh';
+            const langBtn = document.getElementById('langToggle');
+            
+            function updateUIText(lang) {
+                document.querySelectorAll('.i18n').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (key && translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+                langBtn.textContent = lang === 'zh' ? '[ JP ]' : '[ CN ]';
+            }
+
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'zh' ? 'ja' : 'zh';
+                updateUIText(currentLang);
+            });
+
+            AOS.init({
+                duration: 600,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-quad',
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    e.preventDefault();
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            const memberTarget = 600;
+            let animationTriggered = false;
+            const counterEl = document.getElementById('member-counter');
+            
+            function animateMemberCount(start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    counterEl.innerHTML = Math.floor(easeProgress * (end - start) + start).toLocaleString();
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        counterEl.innerHTML = end.toLocaleString() + '+';
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animationTriggered) {
+                        animationTriggered = true;
+                        animateMemberCount(0, memberTarget, 2000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            if (counterEl) {
+                observer.observe(counterEl);
+            }
+
+            updateUIText('zh');
+            
+            window.openJoinModal = function() {
+                document.getElementById('joinModal').style.display = 'flex';
+            };
+            
+            window.closeModal = function() {
+                document.getElementById('joinModal').style.display = 'none';
+            };
+        })();
+    </script>
+</body>
+</html>
