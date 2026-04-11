@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>甜瓜群组官网 - MELON GROUP</title>
+    <title>甜瓜群组 - MELON GROUP</title>
     <meta name="description" content="《Melon Sandbox》游戏群组，专注于内容讨论、资源共享与技术交流等!" />
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -196,7 +196,7 @@
                             <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="chat_tag">频道交流</span>
                         </div>
                         <a href="https://melonxs.icu/chat/" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 hover:hard-shadow text-center mt-auto">
-                            <span class="i18n" data-i18n="visit_chat">进入聊天</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                            <span class="i18n" data-i18n="visit_chat">进入频道</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
 
@@ -237,12 +237,16 @@
 
         <section class="py-16 bg-gray-50 background-pattern border-b-2 border-gray-900 relative">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-3xl text-center border-4 border-gray-900 p-10 bg-counter-bg text-gray-900 hard-shadow-cyan transform hover:-translate-y-1 transition-transform" data-aos="zoom-in">
+                <div id="stats-card" class="mx-auto max-w-3xl text-center border-4 border-gray-900 p-10 bg-counter-bg text-gray-900 hard-shadow-cyan transform hover:-translate-y-1 transition-transform" data-aos="zoom-in">
                     <h2 class="text-sm font-mono font-bold uppercase tracking-widest text-brand-primary mb-4 i18n" data-i18n="member_count_label">
                         [ 群组成员 ]
                     </h2>
                     <div class="text-6xl md:text-8xl font-black tracking-tighter font-orbitron mb-6 text-brand-dark" id="member-counter">
                         0
+                    </div>
+                    <div class="mt-8 pt-4 border-t-2 border-dashed border-gray-400/30">
+                        <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-primary mb-2 i18n" data-i18n="days_since_label">[ 成立天数 ]</h3>
+                        <div class="text-5xl md:text-6xl font-black tracking-tighter font-orbitron text-brand-dark" id="days-counter">0</div>
                     </div>
                 </div>
             </div>
@@ -300,7 +304,7 @@
                     chat_name: '瓜聊频道',
                     chat_desc: '《Melon Sandbox》聊天平台',
                     chat_tag: '频道交流',
-                    visit_chat: '进入聊天',
+                    visit_chat: '进入频道',
                     ai_name: '糖豆AI',
                     ai_desc: '《Melon Sandbox》教程回答AI',
                     ai_tag: '教程AI',
@@ -310,6 +314,7 @@
                     card_tag: '成员证',
                     visit_card: '生成成员证',
                     member_count_label: '[ 群组成员 ]',
+                    days_since_label: '[ 成立天数 ]',
                     footer_partner_prefix: '合作伙伴：',
                     contact_email_label: '联系邮箱：',
                     join_group_title: '加入群组',
@@ -336,7 +341,7 @@
                     chat_name: '瓜聊チャンネル',
                     chat_desc: '『Melon Sandbox』チャットプラットフォーム',
                     chat_tag: 'チャンネル交流',
-                    visit_chat: 'チャットへ',
+                    visit_chat: 'チャンネルへ',
                     ai_name: '糖豆AI',
                     ai_desc: '『Melon Sandbox』チュートリアル回答AI',
                     ai_tag: 'チュートリアルAI',
@@ -346,6 +351,7 @@
                     card_tag: 'メンバー証',
                     visit_card: 'メンバー証作成',
                     member_count_label: '[ グループメンバー ]',
+                    days_since_label: '[ 設立日数 ]',
                     footer_partner_prefix: 'パートナー：',
                     contact_email_label: '連絡先：',
                     join_group_title: 'グループ参加',
@@ -393,8 +399,23 @@
             });
 
             const memberTarget = 700;
-            let animationTriggered = false;
             const counterEl = document.getElementById('member-counter');
+            const daysCounterEl = document.getElementById('days-counter');
+            const statsCard = document.getElementById('stats-card');
+            
+            function getDaysSinceStart() {
+                const startDate = new Date(2025, 1, 2);
+                const today = new Date();
+                startDate.setHours(0, 0, 0, 0);
+                today.setHours(0, 0, 0, 0);
+                const diffTime = today - startDate;
+                return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            }
+            
+            const daysTarget = getDaysSinceStart();
+            
+            let memberAnimationTriggered = false;
+            let daysAnimationTriggered = false;
             
             function animateMemberCount(start, end, duration) {
                 let startTimestamp = null;
@@ -411,19 +432,41 @@
                 };
                 window.requestAnimationFrame(step);
             }
+            
+            function animateDaysCount(start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    daysCounterEl.innerHTML = Math.floor(easeProgress * (end - start) + start).toLocaleString();
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        daysCounterEl.innerHTML = end.toLocaleString();
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
 
-            const observer = new IntersectionObserver((entries) => {
+            const statsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && !animationTriggered) {
-                        animationTriggered = true;
-                        animateMemberCount(0, memberTarget, 2000);
-                        observer.unobserve(entry.target);
+                    if (entry.isIntersecting) {
+                        if (!memberAnimationTriggered) {
+                            memberAnimationTriggered = true;
+                            animateMemberCount(0, memberTarget, 2000);
+                        }
+                        if (!daysAnimationTriggered) {
+                            daysAnimationTriggered = true;
+                            animateDaysCount(0, daysTarget, 2000);
+                        }
+                        statsObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.3 });
 
-            if (counterEl) {
-                observer.observe(counterEl);
+            if (statsCard) {
+                statsObserver.observe(statsCard);
             }
 
             updateUIText('zh');
