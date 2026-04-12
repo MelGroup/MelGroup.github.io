@@ -53,12 +53,27 @@
             }
             
             .btn-hard {
-                @apply border-2 border-gray-900 px-6 py-2.5 font-bold transition-all duration-150 relative inline-block hard-shadow-sm;
+                @apply relative inline-block border-2 border-gray-900 px-6 py-2.5 font-bold transition-all duration-150;
+                background-color: inherit;
                 transform: translate(0,0);
+            }
+            .btn-hard::after {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 100%;
+                height: 100%;
+                border: 2px solid #1a1a2e;
+                z-index: -1;
+                transition: opacity 0.15s;
+                pointer-events: none;
             }
             .btn-hard:active {
                 transform: translate(2px, 2px);
-                box-shadow: none;
+            }
+            .btn-hard:active::after {
+                opacity: 0;
             }
             
             .product-card {
@@ -134,7 +149,7 @@
                 </span>
             </div>
             <div class="flex lg:flex-1 lg:justify-end gap-x-4">
-                <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] hover:bg-gray-900">
+                <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs hover:bg-gray-900 !shadow-none">
                     [ JP ]
                 </button>
             </div>
@@ -187,7 +202,7 @@
                             <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag4">芯片生成</span>
                             <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag6">甜瓜下载</span>
                         </div>
-                        <a href="https://melonxs.icu/" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 hover:hard-shadow text-center mt-auto">
+                        <a href="https://melonxs.icu/" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
                             <span class="i18n" data-i18n="visit_melorce">访问Melorce</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
@@ -203,7 +218,7 @@
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
                             <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="chat_tag">频道交流</span>
                         </div>
-                        <a href="https://melonxs.icu/chat/" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 hover:hard-shadow text-center mt-auto">
+                        <a href="https://melonxs.icu/chat/" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
                             <span class="i18n" data-i18n="visit_chat">进入频道</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
@@ -219,7 +234,7 @@
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
                             <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="ai_tag">教程AI</span>
                         </div>
-                        <a href="https://melonxs.icu/AI/ai.php" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 hover:hard-shadow text-center mt-auto">
+                        <a href="https://melonxs.icu/AI/ai.php" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
                             <span class="i18n" data-i18n="visit_ai">询问AI</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
@@ -235,7 +250,7 @@
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
                             <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="card_tag">成员证</span>
                         </div>
-                        <a href="https://melonxs.icu/memcard.html" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 hover:hard-shadow text-center mt-auto">
+                        <a href="https://melonxs.icu/memcard.html" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
                             <span class="i18n" data-i18n="visit_card">生成成员证</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
