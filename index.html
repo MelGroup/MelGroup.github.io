@@ -96,6 +96,12 @@
             width: 90%;
             box-shadow: 4px 4px 0px 0px #5a4bd6;
         }
+
+        @media (min-width: 1024px) {
+            [data-lang="zh"] .title-responsive {
+                white-space: nowrap;
+            }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden bg-white text-gray-900 font-sans selection:bg-brand-light selection:text-gray-900">
@@ -132,13 +138,13 @@
 
     <main>
         <section id="about" class="relative isolate px-6 lg:px-8 bg-gray-50 background-pattern border-b-2 border-gray-900">
-            <div class="relative mx-auto max-w-4xl py-24 sm:py-32 lg:py-40 text-center">
+            <div class="relative mx-auto max-w-4xl py-16 sm:py-20 lg:py-24 text-center">
                 <div class="mb-8 flex justify-center" data-aos="fade-down">
                     <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide i18n" data-i18n="founded">
                         成立于2025年2月2日
                     </div>
                 </div>
-                <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase whitespace-nowrap" data-aos="fade-up">
+                <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase title-responsive" data-aos="fade-up">
                     <span class="text-brand-dark i18n" data-i18n="hero_line2">《MELON SANDBOX》游戏群组</span>
                 </h1>
                 <p class="mt-8 text-lg font-medium text-gray-700 sm:text-xl leading-8 max-w-2xl mx-auto border-l-4 border-brand-cyan pl-6 text-left bg-white p-6 hard-shadow-brand" data-aos="fade-up" data-aos-delay="100">
@@ -365,6 +371,7 @@
             const langBtn = document.getElementById('langToggle');
             
             function updateUIText(lang) {
+                document.documentElement.setAttribute('data-lang', lang);
                 document.querySelectorAll('.i18n').forEach(el => {
                     const key = el.getAttribute('data-i18n');
                     if (key && translations[lang] && translations[lang][key]) {
