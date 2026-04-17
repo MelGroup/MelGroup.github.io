@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MG/XS成员证生成站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #6c5ce7;
+            --primary-light: #7e6ff8;
+            --primary-dark: #5a4bd6;
+            --secondary-color: #9c88ff;
+            --text-color: #f0f0f0;
+            --text-light: #b0b0b0;
+            --border-color: #2a2a3c;
+            --card-bg: #1a1a2e;
+            --background: #0f0f1b;
+            --gradient-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: radial-gradient(circle at center, #1e1e3c 0%, #0f0f1b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: stretch;
+        }
+        .editor, .preview {
+            flex: 1 1 450px;
+            background: rgba(10, 10, 22, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 40px 35px;
+            box-shadow: 0 25px 50px -10px #000000cc;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+        }
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 30px;
+            letter-spacing: -0.3px;
+            border-left: 6px solid var(--primary-light);
+            padding-left: 20px;
+        }
+        .crop-box {
+            aspect-ratio: 1/1;
+            background: #15152e;
+            border-radius: 32px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: inset 0 4px 8px #00000066, 0 6px 12px #00000080;
+            border: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #crop-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #15152e;
+        }
+        .upload-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: rgba(16, 16, 36, 0.9);
+            border-radius: 60px;
+            padding: 6px 6px 6px 25px;
+            border: 1px solid var(--primary-color);
+        }
+        .upload-icon {
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        .upload-btn {
+            flex: 1;
+            background: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 14px 24px;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+            border: 1px solid var(--primary-light);
+            letter-spacing: 0.5px;
+            position: relative;
+            white-space: nowrap;
+        }
+        .upload-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(108, 92, 231, 0.3);
+        }
+        .upload-btn input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        #switchTemplateBtn {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .field {
+            margin-bottom: 24px;
+        }
+        .field-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-light);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .field-input {
+            width: 100%;
+            padding: 16px 22px;
+            background: #15152e;
+            border: 2px solid #2a2a55;
+            border-radius: 50px;
+            font-size: 18px;
+            color: #ffffff;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+        .field-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.25);
+            background: #1e1e42;
+        }
+        .field-input::placeholder {
+            color: #4b4b8a;
+        }
+        .preview-canvas-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: #0f0f24;
+            border-radius: 48px;
+            padding: 20px;
+            box-shadow: inset 0 4px 8px #03030a;
+            border: 1px solid var(--primary-color);
+        }
+        #preview-canvas {
+            width: 100%;
+            height: auto;
+            border-radius: 40px;
+            box-shadow: 0 25px 35px -10px #000000e6;
+            display: block;
+        }
+        .download-btn {
+            width: 100%;
+            background: var(--primary-color);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 20px 0;
+            border-radius: 70px;
+            border: none;
+            box-shadow: 0 20px 30px -10px rgba(108,92,231,0.5);
+            cursor: pointer;
+            transition: 0.2s;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary-light);
+        }
+        .download-btn:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 24px 35px -8px var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 0;
+        }
+        .cropper-view-box {
+            outline: 2px solid var(--primary-color);
+            outline-color: var(--primary-color);
+        }
+        .cropper-point {
+            background-color: var(--primary-color);
+            width: 8px;
+            height: 8px;
+        }
+        .cropper-point.point-se {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+        }
+        @media (max-width: 900px) {
+            .editor, .preview {
+                padding: 30px 25px;
+            }
+            .title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="editor">
+            <button class="upload-btn" id="switchTemplateBtn">XS工作室成员证</button>
+            <div class="title">编辑信息</div>
+            <div class="crop-box">
+                <img id="crop-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%2315152e'/%3E%3C/svg%3E" alt="crop">
+            </div>
+            <div class="upload-section">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <label class="upload-btn">
+                    选择图片
+                    <input type="file" id="upload-input" accept="image/*">
+                </label>
+            </div>
+            <div class="field">
+                <div class="field-label">昵称</div>
+                <input type="text" class="field-input" id="name-input" placeholder="请输入昵称">
+            </div>
+            <div class="field">
+                <div class="field-label">加入日期</div>
+                <input type="text" class="field-input" id="date-input" placeholder="请输入日期">
+            </div>
+            <div class="field">
+                <div class="field-label">成员简介</div>
+                <input type="text" class="field-input" id="bio-input" placeholder="请输入第一行简介">
+            </div>
+            <div class="field">
+                <input type="text" class="field-input" id="line2-input" placeholder="请输入第二行简介">
+            </div>
+            <div class="field">
+                <input type="text" class="field-input" id="line3-input" placeholder="请输入第三行简介">
+            </div>
+        </div>
+
+        <div class="preview">
+            <div class="title">成员证预览</div>
+            <div class="preview-canvas-wrapper">
+                <canvas id="preview-canvas" style="width:100%; height:auto; border-radius:40px"></canvas>
+            </div>
+            <button class="download-btn" id="download-btn">下载成员证</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script>
+        (function() {
+            const image = document.getElementById('crop-image');
+            const uploadInput = document.getElementById('upload-input');
+            const nameInput = document.getElementById('name-input');
+            const dateInput = document.getElementById('date-input');
+            const bioInput = document.getElementById('bio-input');
+            const line2Input = document.getElementById('line2-input');
+            const line3Input = document.getElementById('line3-input');
+            const canvas = document.getElementById('preview-canvas');
+            const ctx = canvas.getContext('2d');
+            const downloadBtn = document.getElementById('download-btn');
+            const switchBtn = document.getElementById('switchTemplateBtn');
+
+            let cropper = null;
+            let croppedAvatar = null;
+            let cropTimer = null;
+            const templateImg = new Image();
+            templateImg.crossOrigin = 'anonymous';
+            
+            let currentTemplate = 'melon';
+
+            function setTemplate(type) {
+                if (type === 'melon') {
+                    templateImg.src = '甜瓜群组成员证.png';
+                    switchBtn.textContent = '切换XS工作室成员证';
+                    currentTemplate = 'melon';
+                } else {
+                    templateImg.src = 'XS工作室成员证.png';
+                    switchBtn.textContent = '切换甜瓜群组成员证';
+                    currentTemplate = 'xs';
+                }
+            }
+
+            templateImg.onload = function() {
+                drawPreview();
+            };
+            templateImg.onerror = function() {
+            };
+
+            setTemplate('melon');
+
+            function drawCard(name, date, bio, line2, line3, avatarCanvas) {
+                if (!templateImg.complete || templateImg.naturalWidth === 0) return;
+                const w = templateImg.naturalWidth;
+                const h = templateImg.naturalHeight;
+                canvas.width = w;
+                canvas.height = h;
+                ctx.clearRect(0, 0, w, h);
+                ctx.drawImage(templateImg, 0, 0, w, h);
+
+                if (avatarCanvas) {
+                    ctx.drawImage(avatarCanvas, 278, 586, 990, 990);
+                }
+
+                ctx.font = '600 90px system-ui, sans-serif';
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = '#00000080';
+                ctx.shadowBlur = 6;
+                ctx.shadowOffsetY = 2;
+                ctx.textAlign = 'left';
+
+                ctx.fillText(name || '——', 2020, 785);
+                ctx.fillText(date || '——', 2020, 950);
+                ctx.fillText(bio || '——', 2020, 1113);
+
+                if (line2 && line2.trim() !== '') {
+                    ctx.fillText(line2, 1433, 1277);
+                }
+                if (line3 && line3.trim() !== '') {
+                    ctx.fillText(line3, 1433, 1440);
+                }
+
+                ctx.shadowColor = 'transparent';
+            }
+
+            function drawPreview() {
+                const name = nameInput.value.trim() || '未填写';
+                const date = dateInput.value.trim() || '未填写';
+                const bioRaw = bioInput.value.trim();
+                const bio = bioRaw === '' ? '暂无简介' : bioRaw;
+                const line2 = line2Input.value;
+                const line3 = line3Input.value;
+                drawCard(name, date, bio, line2, line3, croppedAvatar);
+            }
+
+            function updateAvatarFromCropper() {
+                if (cropTimer) cancelAnimationFrame(cropTimer);
+                cropTimer = requestAnimationFrame(() => {
+                    if (cropper) {
+                        try {
+                            croppedAvatar = cropper.getCroppedCanvas({ width: 990, height: 990 });
+                        } catch (e) {
+                            croppedAvatar = null;
+                        }
+                    } else {
+                        croppedAvatar = null;
+                    }
+                    drawPreview();
+                });
+            }
+
+            uploadInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                if (!file.type.match('image.*')) {
+                    alert('请选择图片');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    if (cropper) cropper.destroy();
+                    image.src = event.target.result;
+                    cropper = new Cropper(image, {
+                        aspectRatio: 1,
+                        viewMode: 1,
+                        dragMode: 'move',
+                        cropBoxMovable: true,
+                        cropBoxResizable: true,
+                        background: false,
+                        autoCropArea: 0.9,
+                        crop: updateAvatarFromCropper
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
+
+            nameInput.addEventListener('input', drawPreview);
+            dateInput.addEventListener('input', drawPreview);
+            bioInput.addEventListener('input', drawPreview);
+            line2Input.addEventListener('input', drawPreview);
+            line3Input.addEventListener('input', drawPreview);
+
+            switchBtn.addEventListener('click', function() {
+                if (currentTemplate === 'melon') {
+                    setTemplate('xs');
+                } else {
+                    setTemplate('melon');
+                }
+            });
+
+            drawPreview();
+
+            downloadBtn.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = currentTemplate === 'melon' ? '甜瓜群组成员证.png' : 'XS工作室成员证.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        })();
+    </script>
+</body>
+</html>
