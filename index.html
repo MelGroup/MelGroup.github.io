@@ -113,6 +113,21 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="aiModal" onclick="closeAiModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900 i18n" data-i18n="ai_modal_title">糖豆AI</h3>
+            <div class="flex flex-col gap-3">
+                <a href="https://melonxs.icu/AI/ai.php" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
+                    <i class="fas fa-comment-dots mr-2"></i> <span class="i18n" data-i18n="ai_qa">教程问答</span>
+                </a>
+                <a href="https://melonxs.icu/AI/" target="_blank" class="btn-hard bg-brand-cyan text-white hover:bg-brand-cyan/90 text-center">
+                    <i class="fas fa-code mr-2"></i> <span class="i18n" data-i18n="ai_dsl">生成DSL</span>
+                </a>
+                <button onclick="closeAiModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900 i18n" data-i18n="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
     <header class="sticky top-0 z-50 border-b-2 border-gray-900 bg-white/95 backdrop-blur-sm">
         <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
             <div class="flex lg:flex-1">
@@ -122,7 +137,7 @@
             </div>
             <div class="flex lg:flex-1 lg:justify-end gap-x-4">
                 <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
-                    [ JP ]
+                    [ 日本語 ]
                 </button>
             </div>
         </nav>
@@ -204,11 +219,11 @@
                         </div>
                         <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide i18n" data-i18n="ai_desc">《Melon Sandbox》教程回答AI</p>
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="ai_tag">教程AI</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="ai_tag">AI</span>
                         </div>
-                        <a href="https://melonxs.icu/AI/ai.php" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
+                        <button onclick="openAiModal()" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
                             <span class="i18n" data-i18n="visit_ai">询问AI</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
-                        </a>
+                        </button>
                     </div>
 
                     <div class="product-card flex flex-col h-full" data-aos="fade-up" data-aos-delay="250">
@@ -252,7 +267,7 @@
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
             <div class="max-w-md">
                 <span class="text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default">
-                    甜瓜群组_MG
+                    甜瓜群组
                 </span>
                 <p class="mt-4 text-sm text-gray-700">
     <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
@@ -304,7 +319,7 @@
                     visit_chat: '进入频道',
                     ai_name: '糖豆AI',
                     ai_desc: '《Melon Sandbox》教程回答AI',
-                    ai_tag: '教程AI',
+                    ai_tag: 'AI',
                     visit_ai: '询问AI',
                     card_name: '成员证生成站',
                     card_desc: '甜瓜群组/XS工作室成员证生成平台',
@@ -317,7 +332,10 @@
                     join_group_title: '加入群组',
                     join_qq_group: '加入QQ群',
                     join_qq_channel: '加入QQ频道',
-                    cancel: '取消'
+                    cancel: '取消',
+                    ai_modal_title: '糖豆AI',
+                    ai_qa: '教程问答',
+                    ai_dsl: '生成DSL'
                 },
                 ja: {
                     founded: '2025年2月2日設立',
@@ -339,7 +357,7 @@
                     visit_chat: 'チャンネルへ',
                     ai_name: '糖豆AI',
                     ai_desc: '『Melon Sandbox』チュートリアル回答AI',
-                    ai_tag: 'チュートリアルAI',
+                    ai_tag: 'AI',
                     visit_ai: 'AIに質問',
                     card_name: 'メンバー証生成ステーション',
                     card_desc: 'メロングループ/XSスタジオ メンバー証生成プラットフォーム',
@@ -351,8 +369,11 @@
                     contact_email_label: '連絡先：',
                     join_group_title: 'グループ参加',
                     join_qq_group: 'QQグループ',
-                      join_qq_channel: 'QQチャンネル',
-                    cancel: 'キャンセル'
+                    join_qq_channel: 'QQチャンネル',
+                    cancel: 'キャンセル',
+                    ai_modal_title: '糖豆AI',
+                    ai_qa: 'チュートリアルQ&A',
+                    ai_dsl: 'DSL生成'
                 }
             };
 
@@ -367,7 +388,7 @@
                         el.textContent = translations[lang][key];
                     }
                 });
-                langBtn.textContent = lang === 'zh' ? '[ JP ]' : '[ CN ]';
+                langBtn.textContent = lang === 'zh' ? '[ 日本語 ]' : '[ 简体中文 ]';
             }
 
             langBtn.addEventListener('click', () => {
@@ -461,6 +482,14 @@
             
             window.closeModal = function() {
                 document.getElementById('joinModal').style.display = 'none';
+            };
+
+            window.openAiModal = function() {
+                document.getElementById('aiModal').style.display = 'flex';
+            };
+
+            window.closeAiModal = function() {
+                document.getElementById('aiModal').style.display = 'none';
             };
         })();
     </script>
