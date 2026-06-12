@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -8,13 +8,6 @@
     <meta name="description" content="《Melon Sandbox》游戏交流群组，专注于内容讨论、资源共享与技术交流等!" />
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-
     <script>
         tailwind.config = {
             theme: {
@@ -36,65 +29,11 @@
             }
         }
     </script>
-
-    <style type="text/tailwindcss">
-        @layer components {
-            .hard-shadow {
-                box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.9);
-            }
-            .hard-shadow-brand {
-                box-shadow: 4px 4px 0px 0px #5a4bd6;
-            }
-            .hard-shadow-sm {
-                box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.9);
-            }
-            
-            .btn-hard {
-                @apply border-2 border-gray-900 px-6 py-2.5 font-bold transition-all duration-150 relative inline-block hard-shadow-sm;
-            }
-            .btn-hard:active {
-                transform: translate(2px, 2px);
-                box-shadow: none;
-            }
-            
-            .product-card {
-                @apply border-2 border-gray-900 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:hard-shadow-brand;
-            }
-
-            .background-pattern {
-                background-image: linear-gradient(to right,#80808012 1px,transparent 1px),linear-gradient(to bottom,#80808012 1px,transparent 1px);
-                background-size: 24px 24px;
-            }
-        }
-        
-        ::selection {
-            background-color: #9c88ff; 
-            color: #1a1a2e;
-        }
-        
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background: white;
-            border: 2px solid #1a1a2e;
-            padding: 24px;
-            max-width: 320px;
-            width: 90%;
-            box-shadow: 4px 4px 0px 0px #5a4bd6;
-        }
-
-    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body class="overflow-x-hidden bg-white text-gray-900 font-sans selection:bg-brand-light selection:text-gray-900">
 
@@ -151,7 +90,7 @@
                         成立于2025年2月2日
                     </div>
                 </div>
-                <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase title-responsive" data-aos="fade-up">
+                <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase" data-aos="fade-up">
                     <span class="text-brand-dark i18n" data-i18n="hero_line2">《MELON SANDBOX》游戏群组</span>
                 </h1>
                 <p class="mt-8 text-lg font-medium text-gray-700 sm:text-xl leading-8 max-w-2xl mx-auto border-l-4 border-brand-cyan pl-6 text-left bg-white p-6 hard-shadow-brand" data-aos="fade-up" data-aos-delay="100">
@@ -247,7 +186,7 @@
 
         <section class="py-16 bg-gray-50 background-pattern border-b-2 border-gray-900 relative">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div id="stats-card" class="mx-auto max-w-3xl text-center border-4 border-gray-900 p-10 bg-counter-bg text-gray-900 hard-shadow-cyan transform hover:-translate-y-1 transition-transform" data-aos="zoom-in">
+                <div id="stats-card" class="mx-auto max-w-3xl text-center border-4 border-gray-900 p-10 bg-counter-bg text-gray-900 hover:-translate-y-1 transition-transform" data-aos="zoom-in">
                     <h2 class="text-sm font-mono font-bold uppercase tracking-widest text-brand-primary mb-4 i18n" data-i18n="member_count_label">
                         [ 群组成员 ]
                     </h2>
@@ -267,14 +206,14 @@
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
             <div class="max-w-md">
                 <span class="text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default">
-    Melon group
-</span>
+                    Melon group
+                </span>
                 <p class="mt-4 text-sm text-gray-700">
-    <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
-    <a href="https://melon-xsgzs.mysxl.cn" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">XS工作室</a>
-    <span class="mx-1">/</span>
-    <a href="https://msut.how88.top" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">MSUT甜瓜联合科技</a>
-</p>
+                    <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
+                    <a href="https://melon-xsgzs.mysxl.cn" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">XS工作室</a>
+                    <span class="mx-1">/</span>
+                    <a href="https://msut.how88.top" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">MSUT甜瓜联合科技</a>
+                </p>
             </div>
             <div class="text-sm text-gray-600">
                 <span class="i18n" data-i18n="contact_email_label">联系邮箱：</span>
@@ -297,204 +236,6 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        (function(){
-            const translations = {
-                zh: {
-                    founded: '成立于2025年2月2日',
-                    hero_line2: '《MELON SANDBOX》游戏群组',
-                    hero_desc: '甜瓜群组是GW建立的《Melon Sandbox》游戏交流群组，专注于内容讨论、资源共享与技术交流等!',
-                    join_group_btn: '加入群组',
-                    services_label: '[ Melon group ]',
-                    melorce_name: 'Melorce',
-                    services_title: '服务',
-                    melorce_desc: '《Melon Sandbox》资源平台',
-                    tag1: '游戏资源',
-                    tag2: '内容宣传',
-                    tag3: '游戏教程',
-                    tag4: '芯片生成',
-                    tag6: '甜瓜下载',
-                    visit_melorce: '前往Melorce',
-                    ai_name: 'Jelbe',
-                    ai_desc: '《Melon Sandbox》AI',
-                    ai_tag: 'AI',
-                    visit_ai: '询问AI',
-                    source_name: '源码服务',
-                    source_desc: '甜瓜群组源码服务',
-                    source_tag: '源码',
-                    visit_source: '访问仓库',
-                    card_name: '成员证生成站',
-                    card_desc: '甜瓜群组/XS工作室成员证生成平台',
-                    card_tag: '成员证',
-                    visit_card: '生成成员证',
-                    member_count_label: '[ 群组成员 ]',
-                    days_since_label: '[ 成立天数 ]',
-                    footer_partner_prefix: '合作伙伴：',
-                    contact_email_label: '联系邮箱：',
-                    join_group_title: '加入群组',
-                    join_qq_group: '加入QQ群',
-                    join_qq_channel: '加入QQ频道',
-                    cancel: '取消',
-                    ai_modal_title: 'Jelbe',
-                    ai_qa: '教程问答',
-                    ai_dsl: '生成DSL'
-                },
-                ja: {
-                    founded: '2025年2月2日設立',
-                    hero_line2: '『MELON SANDBOX』ゲームグループ',
-                    hero_desc: '甜瓜群组はGWが設立した『Melon Sandbox』ゲーム交流グループで、内容討論、リソース共有、技術交流などを中心に活動しています!',
-                    join_group_btn: 'グループ参加',
-                    services_label: '[ Melon group ]',
-                    melorce_name: 'メロルセ',
-                    services_title: 'サービス',
-                    melorce_desc: '『Melon Sandbox』リソースプラットフォーム',
-                    tag1: 'ゲームリソース',
-                    tag2: 'コンテンツ宣伝',
-                    tag3: 'ゲームチュートリアル',
-                    tag4: 'チップ生成',
-                    tag6: 'メロンダウンロード',
-                    visit_melorce: 'メロルセへ',
-                    ai_name: 'ジェルベ',
-                    ai_desc: '『Melon Sandbox』AI',
-                    ai_tag: 'AI',
-                    visit_ai: 'AIに質問',
-                    source_name: 'ソースコードサービス',
-                    source_desc: '甜瓜群组ソースコードサービス',
-                    source_tag: 'ソースコード',
-                    visit_source: 'リポジトリへ',
-                    card_name: 'メンバー証生成ステーション',
-                    card_desc: '甜瓜群组/XS工作室メンバー証生成プラットフォーム',
-                    card_tag: 'メンバー証',
-                    visit_card: 'メンバー証作成',
-                    member_count_label: '[ グループメンバー ]',
-                    days_since_label: '[ 設立日数 ]',
-                    footer_partner_prefix: 'パートナー：',
-                    contact_email_label: '連絡先：',
-                    join_group_title: 'グループ参加',
-                    join_qq_group: 'QQグループ',
-                    join_qq_channel: 'QQチャンネル',
-                    cancel: 'キャンセル',
-                    ai_modal_title: 'ジェルベ',
-                    ai_qa: 'チュートリアルQ&A',
-                    ai_dsl: 'DSL生成'
-                }
-            };
-
-            let currentLang = 'zh';
-            const langBtn = document.getElementById('langToggle');
-            
-            function updateUIText(lang) {
-                document.documentElement.setAttribute('data-lang', lang);
-                document.querySelectorAll('.i18n').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (key && translations[lang] && translations[lang][key]) {
-                        el.textContent = translations[lang][key];
-                    }
-                });
-                langBtn.textContent = lang === 'zh' ? '[ 日本語 ]' : '[ 简体中文 ]';
-            }
-
-            langBtn.addEventListener('click', () => {
-                currentLang = currentLang === 'zh' ? 'ja' : 'zh';
-                updateUIText(currentLang);
-            });
-
-            AOS.init({
-                duration: 600,
-                once: true,
-                offset: 50,
-                easing: 'ease-out-quad',
-            });
-
-            const memberTarget = 1000;
-            const counterEl = document.getElementById('member-counter');
-            const daysCounterEl = document.getElementById('days-counter');
-            const statsCard = document.getElementById('stats-card');
-            
-            function getDaysSinceStart() {
-                const startDate = new Date(2025, 1, 2);
-                const today = new Date();
-                startDate.setHours(0, 0, 0, 0);
-                today.setHours(0, 0, 0, 0);
-                const diffTime = today - startDate;
-                return Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            }
-            
-            const daysTarget = getDaysSinceStart();
-            
-            let memberAnimationTriggered = false;
-            let daysAnimationTriggered = false;
-            
-            function animateMemberCount(start, end, duration) {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    const easeProgress = 1 - Math.pow(1 - progress, 3);
-                    counterEl.innerHTML = Math.floor(easeProgress * (end - start) + start).toLocaleString();
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        counterEl.innerHTML = end.toLocaleString() + '+';
-                    }
-                };
-                window.requestAnimationFrame(step);
-            }
-            
-            function animateDaysCount(start, end, duration) {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    const easeProgress = 1 - Math.pow(1 - progress, 3);
-                    daysCounterEl.innerHTML = Math.floor(easeProgress * (end - start) + start).toLocaleString();
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        daysCounterEl.innerHTML = end.toLocaleString();
-                    }
-                };
-                window.requestAnimationFrame(step);
-            }
-
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!memberAnimationTriggered) {
-                            memberAnimationTriggered = true;
-                            animateMemberCount(0, memberTarget, 2000);
-                        }
-                        if (!daysAnimationTriggered) {
-                            daysAnimationTriggered = true;
-                            animateDaysCount(0, daysTarget, 2000);
-                        }
-                        statsObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            if (statsCard) {
-                statsObserver.observe(statsCard);
-            }
-
-            updateUIText('zh');
-            
-            window.openJoinModal = function() {
-                document.getElementById('joinModal').style.display = 'flex';
-            };
-            
-            window.closeModal = function() {
-                document.getElementById('joinModal').style.display = 'none';
-            };
-
-            window.openAiModal = function() {
-                document.getElementById('aiModal').style.display = 'flex';
-            };
-
-            window.closeAiModal = function() {
-                document.getElementById('aiModal').style.display = 'none';
-            };
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
