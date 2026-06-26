@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/jpeg" href="../甜瓜群组.png" />
+    <title>马卡龙 - MoFiger</title>
+    <meta name="description" content="MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具的APP!" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#5a4bd6',
+                        'brand-primary': '#6c5ce7',
+                        'brand-cyan': '#00cec9',
+                        'brand-light': '#9c88ff',
+                        'footer-bg': '#f8f9ff',
+                        'counter-bg': '#f0eaff',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'Poppins', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="overflow-x-hidden bg-white text-gray-900 font-sans selection:bg-brand-light selection:text-gray-900">
 
+    <header class="sticky top-0 z-50 border-b-2 border-gray-900 bg-white/95 backdrop-blur-sm">
+        <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <span class="-m-1.5 p-1.5 text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default inline-flex items-center gap-1">
+                    MoFiger
+                    <img src="../MG.png" alt="MG" class="h-6 w-auto inline-block">
+                </span>
+            </div>
+            <div class="flex lg:flex-1 lg:justify-end gap-x-4">
+                <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
+                    [ 日本語 ]
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="relative isolate px-6 lg:px-8 bg-gray-50 background-pattern border-b-2 border-gray-900">
+            <div class="relative mx-auto max-w-4xl py-16 sm:py-20 lg:py-24 text-center">
+                <div class="mb-8 flex justify-center" data-aos="fade-down">
+                    <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide i18n" data-i18n="founded">
+                        MoFiger2026.6.27
+                    </div>
+                </div>
+                <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase" data-aos="fade-up">
+                    <span class="text-brand-dark i18n" data-i18n="hero_line2">MoFiger</span>
+                </h1>
+                <p class="mt-8 text-lg font-medium text-gray-700 sm:text-xl leading-8 max-w-2xl mx-auto border-l-4 border-brand-cyan pl-6 text-left bg-white p-6 hard-shadow-brand" data-aos="fade-up" data-aos-delay="100">
+                    <span class="i18n" data-i18n="hero_desc">MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具的APP!</span>
+                </p>
+                <div class="mt-12 flex items-center justify-center gap-x-6" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://MelGroup.github.io" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
+                        <i class="fas fa-download mr-2"></i> <span class="i18n" data-i18n="download_btn">下载MoFiger</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-footer-bg text-gray-900 border-t-4 border-brand-cyan">
+        <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="max-w-md">
+                <span class="text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default">
+                    MoFiger
+                </span>
+                <p class="mt-4 text-sm text-gray-700">
+                    <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
+                    <a href="https://melon-xsgzs.mysxl.cn" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">XS工作室</a>
+                    <span class="mx-1">/</span>
+                    <a href="https://msut.how88.top" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">MSUT甜瓜联合科技</a>
+                </p>
+            </div>
+            <div class="text-sm text-gray-600">
+                <span class="i18n" data-i18n="contact_email_label">联系邮箱：</span>
+                <a href="mailto:MeGr@foxmail.com" class="hover:text-brand-primary hover:underline font-mono">MeGr@foxmail.com</a>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8 border-t border-gray-200 flex flex-col items-center sm:flex-row sm:justify-between gap-4">
+            <p class="text-xs font-mono text-gray-500">
+                ©2026 MoFiger | <a href="https://icp.gov.moe/?keyword=20260730" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">萌ICP备20260730号</a>
+            </p>
+            <div class="flex gap-x-6 text-gray-600 text-lg">
+                <a href="https://v.douyin.com/ccBn5tlwp10/" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-tiktok"></i></a>
+                <a href="https://v.kuaishou.com/JMPu7VqR" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fas fa-video"></i></a>
+                <a href="https://m.bilibili.com/space/3537124343154753?plat_id=1&share_from=space&share_medium=android&share_plat=android&share_session_id=925e61ad-ac3c-4aa7-806c-5f31b4f94892&share_source=COPY&share_tag=s_i&timestamp=1768564054&unique_k=DaXuGHA" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-bilibili"></i></a>
+                <a href="http://www.youtube.com/@%E7%94%9C%E7%93%9CGW" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/MelGroup" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
