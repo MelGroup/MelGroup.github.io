@@ -9,10 +9,10 @@
             contact_email_label: '联系邮箱：'
         },
         ja: {
-            founded: 'マカロン2026.6.27',
-            hero_line2: 'マカロン',
-            hero_desc: 'マカロン——メロルセリソースリスト、MSUTファイルライブラリ、DSLツールを統合したAPP!',
-            download_btn: 'マカロンをダウンロード',
+            founded: 'MoFiger2026.6.27',
+            hero_line2: 'MoFiger',
+            hero_desc: 'MoFiger——メロルセリソースリスト、MSUTファイルライブラリ、DSLツールを統合したAPP!',
+            download_btn: 'MoFigerをダウンロード',
             footer_partner_prefix: 'パートナー：',
             contact_email_label: '連絡先：'
         }
