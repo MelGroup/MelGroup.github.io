@@ -45,7 +45,7 @@
             hero_line2: '『MELON SANDBOX』ゲームグループ',
             hero_desc: '甜瓜群组はGWが設立した『Melon Sandbox』ゲーム交流グループで、内容討論、リソース共有、技術交流などを中心に活動しています!',
             join_group_btn: 'グループ参加',
-            visit_owner_homepage: 'オーナーページへ',
+            visit_owner_homepage: 'グループオーナーのプロフィールへ行く',
             services_label: '[ Melon group ]',
             melorce_name: 'メロルセ',
             services_title: 'サービス',
