@@ -1,7 +1,7 @@
 (function(){
     const translations = {
         zh: {
-            founded: 'MoFiger2026.7.14',
+            founded: 'MoFiger2026.7.24',
             hero_line2: 'MoFiger',
             hero_desc: 'MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具、图芯工具的APP!',
             download_btn: '下载MoFiger',
@@ -9,7 +9,7 @@
             contact_email_label: '联系邮箱：'
         },
         ja: {
-            founded: 'マカロン2026.7.14',
+            founded: 'マカロン2026.7.24',
             hero_line2: 'マカロン',
             hero_desc: 'マカロン——メロルセリソースリスト、MSUTファイルライブラリ、DSLツール、図芯ツールを統合したAPP!',
             download_btn: 'マカロンをダウンロード',
