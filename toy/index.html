@@ -1,1 +1,147 @@
-
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Melon World</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;font-family:'Press Start 2P',monospace;background:#111;color:#fff;display:flex;justify-content:center;align-items:center}
+#app{display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;max-width:100%}
+#scoreboard{display:flex;justify-content:space-between;width:100%;max-width:400px;font-size:10px}
+#scoreboard span{background:#222;padding:6px 12px;color:#fff}
+canvas{display:block;background:#000;box-shadow:0 2px 12px rgba(0,0,0,.5);max-width:100%;height:auto}
+#controls{display:grid;grid-template-columns:65px 65px 65px;grid-template-rows:65px 65px 65px;gap:5px;justify-content:center;margin-top:4px}
+#controls button{background:#222;border:2px solid #444;padding:0;cursor:pointer;outline:0;transition:transform .1s;box-shadow:0 4px 0 #0a0a0a}
+#controls button:active{transform:translateY(3px);box-shadow:0 1px 0 #0a0a0a}
+#controls button img{width:55px;height:55px;display:block;margin:3px auto;pointer-events:none}
+#btnUp{grid-column:2;grid-row:1}
+#btnLeft{grid-column:1;grid-row:2}
+#btnRight{grid-column:3;grid-row:2}
+#btnDown{grid-column:2;grid-row:3}
+#gameOver{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:10}
+#gameOver.show{display:flex}
+#gameOverBox{background:#222;padding:32px 40px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.5)}
+#gameOverBox h2{margin:0 0 10px;font-size:16px;color:#e94560}
+#gameOverBox p{margin:0 0 16px;font-size:12px;color:#fff}
+#gameOverBox button{background:#e94560;color:#fff;border:0;padding:10px 24px;font-size:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="scoreboard"><span>SCORE <b id="score">0</b></span><span>BEST <b id="best">0</b></span></div>
+<canvas id="game"></canvas>
+<div id="controls">
+<button id="btnUp"><img src="key_up.png" alt="上"></button>
+<button id="btnLeft"><img src="key_left.png" alt="左"></button>
+<button id="btnRight"><img src="key.png" alt="右"></button>
+<button id="btnDown"><img src="key_down.png" alt="下"></button>
+</div>
+</div>
+<div id="gameOver"><div id="gameOverBox"><h2>GAME OVER</h2><p>SCORE <b id="finalScore">0</b></p><button id="restartBtn">重新开始</button></div></div>
+<script>
+const COLS=20,ROWS=15,CELL=26
+const W=COLS*CELL,H=ROWS*CELL
+const canvas=document.getElementById('game'),ctx=canvas.getContext('2d')
+canvas.width=W;canvas.height=H
+const headImg=new Image(),bodyImg=new Image(),appleImg=new Image()
+headImg.src='head.png';bodyImg.src='body.png';appleImg.src='apple.png'
+let snake,direction,nextDirection,apple,score,best,gameRunning,gameLoop
+function init(){
+snake=[{x:8,y:6},{x:7,y:6},{x:6,y:6}]
+direction='right';nextDirection='right'
+score=0
+document.getElementById('score').textContent='0'
+best=parseInt(localStorage.getItem('snakeBest')||'0')
+document.getElementById('best').textContent=best
+spawnApple()
+gameRunning=true
+document.getElementById('gameOver').classList.remove('show')
+}
+function spawnApple(){
+let pos
+while(!pos||snake.some(s=>s.x===pos.x&&s.y===pos.y)){
+pos={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)}
+}
+apple=pos
+}
+function update(){
+if(!gameRunning)return
+direction=nextDirection
+const head={x:snake[0].x,y:snake[0].y}
+switch(direction){
+case'up':head.y--;break
+case'down':head.y++;break
+case'left':head.x--;break
+case'right':head.x++;break
+}
+if(head.x<0)head.x=COLS-1
+if(head.x>=COLS)head.x=0
+if(head.y<0)head.y=ROWS-1
+if(head.y>=ROWS)head.y=0
+for(let i=1;i<snake.length;i++){
+if(snake[i].x===head.x&&snake[i].y===head.y){
+gameOver()
+return
+}
+}
+snake.unshift(head)
+if(head.x===apple.x&&head.y===apple.y){
+score++
+document.getElementById('score').textContent=score
+if(score>best){best=score;localStorage.setItem('snakeBest',best);document.getElementById('best').textContent=best}
+spawnApple()
+}else{
+snake.pop()
+}
+draw()
+}
+function draw(){
+ctx.fillStyle='#000'
+ctx.fillRect(0,0,W,H)
+appleImg&&ctx.drawImage(appleImg,apple.x*CELL,apple.y*CELL,CELL,CELL)
+for(let i=0;i<snake.length;i++){
+const s=snake[i]
+if(i===0){
+ctx.save()
+ctx.translate(s.x*CELL+CELL/2,s.y*CELL+CELL/2)
+switch(direction){
+case'up':ctx.rotate(-Math.PI/2);break
+case'down':ctx.rotate(Math.PI/2);break
+case'left':ctx.rotate(Math.PI);break
+case'right':break
+}
+ctx.drawImage(headImg,-CELL/2,-CELL/2,CELL,CELL)
+ctx.restore()
+}else{
+ctx.drawImage(bodyImg,s.x*CELL,s.y*CELL,CELL,CELL)
+}
+}
+}
+function gameOver(){
+gameRunning=false
+clearInterval(gameLoop)
+document.getElementById('finalScore').textContent=score
+if(score>best){best=score;localStorage.setItem('snakeBest',best);document.getElementById('best').textContent=best}
+document.getElementById('gameOver').classList.add('show')
+}
+function setDirection(dir){
+if(!gameRunning)return
+const opposites={up:'down',down:'up',left:'right',right:'left'}
+if(dir!==opposites[direction])nextDirection=dir
+}
+document.getElementById('btnUp').addEventListener('click',()=>setDirection('up'))
+document.getElementById('btnDown').addEventListener('click',()=>setDirection('down'))
+document.getElementById('btnLeft').addEventListener('click',()=>setDirection('left'))
+document.getElementById('btnRight').addEventListener('click',()=>setDirection('right'))
+document.getElementById('restartBtn').addEventListener('click',()=>{clearInterval(gameLoop);init();gameLoop=setInterval(update,170)})
+document.addEventListener('keydown',e=>{
+const k={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[e.key]
+if(k){e.preventDefault();setDirection(k)}
+})
+init()
+gameLoop=setInterval(update,170)
+</script>
+</body>
+</html>
