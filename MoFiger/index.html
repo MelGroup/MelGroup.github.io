@@ -32,8 +32,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .modal-content {
+            background: white;
+            border: 4px solid #1a1a1a;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+        }
+        .btn-hard {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            border: 2px solid #1a1a1a;
+            box-shadow: 4px 4px 0 #1a1a1a;
+            transition: all 0.1s ease;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn-hard:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #1a1a1a;
+        }
+        .btn-hard:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0 #1a1a1a;
+        }
+        .hard-shadow-brand {
+            box-shadow: 4px 4px 0 #00cec9;
+        }
+        .hard-shadow-sm {
+            box-shadow: 2px 2px 0 #1a1a1a;
+        }
+        .background-pattern {
+            background-image: radial-gradient(#d4d4d4 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
 </head>
 <body class="overflow-x-hidden bg-white text-gray-900 font-sans selection:bg-brand-light selection:text-gray-900">
+
+    <div class="modal-overlay" id="downloadModal" onclick="closeDownloadModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900 i18n" data-i18n="download_modal_title">下载MoFiger</h3>
+            <div class="flex flex-col gap-3">
+                <a href="https://github.com/MelGroup/MelGroup.github.io/blob/main/MoFiger/MoFiger2026.8.4.apk" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+                <a href="https://1819238185.share.123pan.cn/123pan/wyJ9jv-cH4Qh" target="_blank" class="btn-hard bg-brand-cyan text-white hover:bg-brand-cyan/90 text-center">
+                    <i class="fas fa-cloud mr-2"></i> 123云盘
+                </a>
+                <button onclick="closeDownloadModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900 i18n" data-i18n="cancel">取消</button>
+            </div>
+        </div>
+    </div>
 
     <header class="sticky top-0 z-50 border-b-2 border-gray-900 bg-white/95 backdrop-blur-sm">
         <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
@@ -59,7 +125,7 @@
             <div class="relative mx-auto max-w-4xl py-16 sm:py-20 lg:py-24 text-center">
                 <div class="mb-8 flex justify-center" data-aos="fade-down">
                     <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide i18n" data-i18n="founded">
-                        MoFiger2026.8.1
+                        MoFiger2026.8.4
                     </div>
                 </div>
                 <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase" data-aos="fade-up">
@@ -69,9 +135,9 @@
                     <span class="i18n" data-i18n="hero_desc">MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具、图芯工具的APP!</span>
                 </p>
                 <div class="mt-12 flex items-center justify-center gap-x-6" data-aos="fade-up" data-aos-delay="200">
-                    <a href="https://bucket.rutno.com/d?sid=KguIvNuRnkklfY9Wc7b77aTnvMrH" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
+                    <button onclick="openDownloadModal()" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
                         <i class="fas fa-download mr-2"></i> <span class="i18n" data-i18n="download_btn">下载MoFiger</span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -113,4 +179,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
