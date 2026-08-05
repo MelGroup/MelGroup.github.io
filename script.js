@@ -108,7 +108,7 @@
         easing: 'ease-out-quad',
     });
 
-    const memberTarget = 1200;
+    const memberTarget = 1300;
     const counterEl = document.getElementById('member-counter');
     const daysCounterEl = document.getElementById('days-counter');
     const statsCard = document.getElementById('stats-card');
