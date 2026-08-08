@@ -6,6 +6,8 @@
             hero_desc: 'MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具、图芯工具的APP!',
             download_btn: '下载MoFiger',
             download_modal_title: '下载MoFiger',
+            direct_download: '直接下载',
+            pan123: '123云盘',
             footer_partner_prefix: '合作伙伴：',
             contact_email_label: '联系邮箱：',
             cancel: '取消'
@@ -16,6 +18,8 @@
             hero_desc: 'マカロン——メロルセリソースリスト、MSUTファイルライブラリ、DSLツール、図芯ツールを統合したAPP!',
             download_btn: 'マカロンをダウンロード',
             download_modal_title: 'マカロンをダウンロード',
+            direct_download: '直接ダウンロード',
+            pan123: '123クラウド',
             footer_partner_prefix: 'パートナー：',
             contact_email_label: '連絡先：',
             cancel: 'キャンセル'
