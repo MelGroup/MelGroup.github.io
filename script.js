@@ -35,10 +35,7 @@
             join_group_title: '加入群组',
             join_qq_group: '加入QQ群',
             join_qq_channel: '加入QQ频道',
-            cancel: '取消',
-            ai_modal_title: 'Jelbe',
-            ai_qa: '教程问答',
-            ai_dsl: '生成DSL'
+            cancel: '取消'
         },
         ja: {
             founded: '2025年2月2日設立',
@@ -75,10 +72,7 @@
             join_group_title: 'グループ参加',
             join_qq_group: 'QQグループ',
             join_qq_channel: 'QQチャンネル',
-            cancel: 'キャンセル',
-            ai_modal_title: 'ジェルベ',
-            ai_qa: 'チュートリアルQ&A',
-            ai_dsl: 'DSL生成'
+            cancel: 'キャンセル'
         }
     };
 
@@ -187,13 +181,5 @@
     
     window.closeModal = function() {
         document.getElementById('joinModal').style.display = 'none';
-    };
-
-    window.openAiModal = function() {
-        document.getElementById('aiModal').style.display = 'flex';
-    };
-
-    window.closeAiModal = function() {
-        document.getElementById('aiModal').style.display = 'none';
     };
 })();
