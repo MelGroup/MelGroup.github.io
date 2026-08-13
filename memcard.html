@@ -59,7 +59,7 @@
         }
         .crop-box {
             aspect-ratio: 1/1;
-            background: #f0eeff;
+            background: #ffffff;
             overflow: hidden;
             margin-bottom: 20px;
             border: 2px solid #1a1a2e;
@@ -73,7 +73,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background-color: #f0eeff;
+            background-color: #ffffff;
         }
         .upload-section {
             display: flex;
@@ -247,7 +247,7 @@
             <button class="upload-btn" id="switchTemplateBtn">XS工作室成员证</button>
             <div class="title">编辑信息</div>
             <div class="crop-box">
-                <img id="crop-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%2315152e'/%3E%3C/svg%3E" alt="crop">
+                <img id="crop-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23ffffff'/%3E%3C/svg%3E" alt="crop">
             </div>
             <div class="upload-section">
                 <i class="fas fa-cloud-upload-alt upload-icon"></i>
@@ -352,9 +352,6 @@
                 ctx.clearRect(0, 0, w, h);
 
                 ctx.drawImage(templateImg, 0, 0, w, h);
-
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(278, 586, 990, 990);
 
                 if (avatarCanvas) {
                     ctx.drawImage(avatarCanvas, 278, 586, 990, 990);
