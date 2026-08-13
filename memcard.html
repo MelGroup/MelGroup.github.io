@@ -40,7 +40,8 @@
             gap: 30px;
             align-items: stretch;
         }
-        .editor, .preview {
+        .editor,
+        .preview {
             flex: 1 1 450px;
             background: #ffffff;
             padding: 40px 35px;
@@ -62,7 +63,7 @@
             overflow: hidden;
             margin-bottom: 20px;
             border: 2px solid #1a1a2e;
-            box-shadow: inset 2px 2px 0px 0px rgba(0,0,0,0.1);
+            box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -95,7 +96,7 @@
             font-size: 16px;
             padding: 14px 24px;
             border: 2px solid #1a1a2e;
-            box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.9);
+            box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.9);
             cursor: pointer;
             transition: all 0.15s;
             text-align: center;
@@ -150,20 +151,32 @@
         .field-input::placeholder {
             color: #aaa;
         }
+
         .preview-canvas-wrapper {
             display: flex;
+            align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
-            background: #f8f7ff;
-            padding: 20px;
+            background: #0b0b1a;
             border: 2px solid #1a1a2e;
-            box-shadow: inset 2px 2px 0px 0px rgba(0,0,0,0.1);
-        }
-        #preview-canvas {
+            overflow: hidden;
+            padding: 0;
+            aspect-ratio: 3000 / 2000;
             width: 100%;
-            height: auto;
-            display: block;
+            position: relative;
         }
+
+        #preview-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #0b0b1a;
+        }
+
+        #preview-canvas {
+            display: none;
+        }
+
         .download-btn {
             width: 100%;
             background: #6c5ce7;
@@ -172,10 +185,11 @@
             font-weight: 700;
             padding: 20px 0;
             border: 2px solid #1a1a2e;
-            box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.9);
+            box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.9);
             cursor: pointer;
             transition: all 0.15s;
             letter-spacing: 1px;
+            margin-top: 20px;
         }
         .download-btn:active {
             transform: translate(2px, 2px);
@@ -184,6 +198,7 @@
         .download-btn:hover {
             background: #5a4bd6;
         }
+
         .cropper-view-box,
         .cropper-face {
             border-radius: 0;
@@ -202,12 +217,26 @@
             height: 10px;
             background-color: #6c5ce7;
         }
+
         @media (max-width: 900px) {
-            .editor, .preview {
+            .editor,
+            .preview {
                 padding: 30px 25px;
             }
             .title {
                 font-size: 24px;
+            }
+            .preview-canvas-wrapper {
+                aspect-ratio: 3000 / 2000;
+            }
+        }
+        @media (max-width: 600px) {
+            .editor,
+            .preview {
+                padding: 20px 16px;
+            }
+            .preview-canvas-wrapper {
+                aspect-ratio: 3000 / 2000;
             }
         }
     </style>
@@ -250,13 +279,15 @@
         <div class="preview">
             <div class="title">成员证预览</div>
             <div class="preview-canvas-wrapper">
-                <canvas id="preview-canvas" style="width:100%; height:auto"></canvas>
+                <img id="preview-img" alt="成员证预览">
+                <canvas id="preview-canvas"></canvas>
             </div>
             <button class="download-btn" id="download-btn">下载成员证</button>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js">
+    </script>
     <script>
         (function() {
             const image = document.getElementById('crop-image');
@@ -268,6 +299,7 @@
             const line3Input = document.getElementById('line3-input');
             const canvas = document.getElementById('preview-canvas');
             const ctx = canvas.getContext('2d');
+            const previewImg = document.getElementById('preview-img');
             const downloadBtn = document.getElementById('download-btn');
             const switchBtn = document.getElementById('switchTemplateBtn');
 
@@ -276,7 +308,7 @@
             let cropTimer = null;
             const templateImg = new Image();
             templateImg.crossOrigin = 'anonymous';
-            
+
             let currentTemplate = 'melon';
 
             function setTemplate(type) {
@@ -294,18 +326,31 @@
             templateImg.onload = function() {
                 drawPreview();
             };
-            templateImg.onerror = function() {
-            };
+            templateImg.onerror = function() {};
 
             setTemplate('melon');
 
             function drawCard(name, date, bio, line2, line3, avatarCanvas) {
-                if (!templateImg.complete || templateImg.naturalWidth === 0) return;
+                if (!templateImg.complete || templateImg.naturalWidth === 0) {
+                    const w = 3000,
+                        h = 2000;
+                    canvas.width = w;
+                    canvas.height = h;
+                    ctx.fillStyle = '#0b0b1a';
+                    ctx.fillRect(0, 0, w, h);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '60px system-ui, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('模板加载中...', w / 2, h / 2);
+                    return;
+                }
+
                 const w = templateImg.naturalWidth;
                 const h = templateImg.naturalHeight;
                 canvas.width = w;
                 canvas.height = h;
                 ctx.clearRect(0, 0, w, h);
+
                 ctx.drawImage(templateImg, 0, 0, w, h);
 
                 if (avatarCanvas) {
@@ -340,7 +385,13 @@
                 const bio = bioRaw === '' ? '暂无简介' : bioRaw;
                 const line2 = line2Input.value;
                 const line3 = line3Input.value;
+
                 drawCard(name, date, bio, line2, line3, croppedAvatar);
+
+                try {
+                    const dataUrl = canvas.toDataURL('image/png');
+                    previewImg.src = dataUrl;
+                } catch (e) {}
             }
 
             function updateAvatarFromCropper() {
@@ -399,14 +450,22 @@
                 }
             });
 
-            drawPreview();
-
             downloadBtn.addEventListener('click', function() {
                 const link = document.createElement('a');
-                link.download = 'member_card_' + Math.random().toString(36).substring(2,10) + '.png';
+                link.download = 'member_card_' + Math.random().toString(36).substring(2, 10) + '.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
+
+            drawPreview();
+
+            if (templateImg.complete && templateImg.naturalWidth > 0) {
+                drawPreview();
+            } else {
+                templateImg.onload = function() {
+                    drawPreview();
+                };
+            }
         })();
     </script>
 </body>
