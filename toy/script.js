@@ -5,8 +5,12 @@
             services_title: 'Toy',
             game1_name: '逃离甜瓜',
             game1_btn: '游玩逃离甜瓜',
+            game3_name: '图芯工具',
+            game3_btn: '使用工具',
             game2_name: '贪吃蛇',
             game2_btn: '游玩贪吃蛇',
+            game4_name: '成员证生成站',
+            game4_btn: '生成成员证',
             footer_partner_prefix: '合作伙伴：',
             contact_email_label: '联系邮箱：'
         },
@@ -15,8 +19,12 @@
             services_title: 'Toy',
             game1_name: 'スイカからの脱出',
             game1_btn: 'スイカからの脱出をプレイ',
+            game3_name: '図芯ツール',
+            game3_btn: 'ツールを使う',
             game2_name: 'ヘビゲーム',
             game2_btn: 'ヘビゲームをプレイ',
+            game4_name: 'メンバー証生成所',
+            game4_btn: 'メンバー証を生成',
             footer_partner_prefix: 'パートナー：',
             contact_email_label: '連絡先：'
         }
