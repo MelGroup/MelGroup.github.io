@@ -20,11 +20,11 @@
             game1_name: 'スイカからの脱出',
             game1_btn: 'スイカからの脱出をプレイ',
             game3_name: '図芯ツール',
-            game3_btn: 'ツールを使う',
+            game3_btn: 'ツールを使用',
             game2_name: 'ヘビゲーム',
             game2_btn: 'ヘビゲームをプレイ',
-            game4_name: 'メンバー証生成所',
-            game4_btn: 'メンバー証を生成',
+            game4_name: 'メンバーカード生成所',
+            game4_btn: 'メンバーカードを生成',
             footer_partner_prefix: 'パートナー：',
             contact_email_label: '連絡先：'
         }
