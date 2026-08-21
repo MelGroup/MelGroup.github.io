@@ -479,7 +479,7 @@ const sx=i*stripW;
 const rayA=state.pDir-HALF_FOV+FOV*i/cols;
 const r=castRay(state.px,state.py,rayA);
 const perp=r.perp;
-let lineH=H/perp;
+let lineH=(2*W)/perp;
 if(lineH>H)lineH=H;
 const bob=Math.sin(state.walkT)*H*0.008;
 const horizon=H/2+bob;
@@ -516,7 +516,7 @@ if(floorReady&&b>0.02){
 const bob=Math.sin(state.walkT)*H*0.008;
 const horizon=H/2+bob;
 for(let y=Math.max(0,Math.ceil(horizon+lineH/2));y<H;y+=4){
-const cDist=H/(2*(y-horizon))||1;
+const cDist=W/(y-horizon)||1;
 const viewX=(2*y/W-1)*Math.tan(HALF_FOV)*cDist;
 const ftX=state.px+Math.cos(rayA)*perp+Math.cos(rayA+Math.PI/2)*viewX;
 const ftY=state.py+Math.sin(rayA)*perp+Math.sin(rayA+Math.PI/2)*viewX;
@@ -534,12 +534,12 @@ const dx=state.mx-state.px,dy=state.my-state.py;
 const proj=dx*Math.cos(state.pDir)+dy*Math.sin(state.pDir);
 const rightX=dx*(-Math.sin(state.pDir))+dy*Math.cos(state.pDir);
 if(proj>0.2){
-const screenX=W/2+(rightX/proj)*(W/(2*Math.tan(HALF_FOV)));
+const screenX=W/2+(rightX/proj)*(2*W);
 const aOff=Math.abs(screenX/W-0.5)*2;
 const cone=Math.pow(Math.max(0,1-aOff*0.9),2);
 const dF=Math.max(0,Math.min(1,1/(1+proj*0.5)));
 const b=cone*dF;
-const sc=H/proj;
+const sc=(2*W)/proj;
 const col=Math.floor(screenX/stripW);
 if(screenX>-sc&&screenX<W+sc&&col>=0&&col<cols&&zbuf[col]>proj-0.2&&b>0.03){
 const sz=sc*1.6;
