@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/jpeg" href="../甜瓜群组.png" />
+    <title>Melon Toy</title>
+    <meta name="description" content="Melon Toy——甜瓜网页小游戏" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#5a4bd6',
+                        'brand-primary': '#6c5ce7',
+                        'brand-cyan': '#00cec9',
+                        'brand-light': '#9c88ff',
+                        'footer-bg': '#f8f9ff',
+                        'counter-bg': '#f0eaff',
+                    },
+                    fontFamily: {
+                        sans: ['Open Sans', 'Poppins', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="overflow-x-hidden bg-white text-gray-900 font-sans selection:bg-brand-light selection:text-gray-900">
+
+    <header class="sticky top-0 z-50 border-b-2 border-gray-900 bg-white/95 backdrop-blur-sm">
+        <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <a href="https://MelGroup.github.io" target="_blank" rel="noopener noreferrer" class="-m-1.5 p-1.5 text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron inline-flex items-center gap-1 hover:text-brand-primary transition-colors no-underline">
+                    甜瓜群组_MG
+                    <img src="../MG.png" alt="MG" class="h-6 w-auto inline-block">
+                </a>
+            </div>
+            <div class="flex lg:flex-1 lg:justify-end gap-x-4">
+                <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
+                    [ 日本語 ]
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="services" class="bg-white py-12 sm:py-16 border-b-2 border-gray-900">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center mb-8" data-aos="fade-up">
+                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan i18n" data-i18n="services_label">[ Melon group ]</h2>
+                    <p class="mt-2 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl font-orbitron i18n" data-i18n="services_title">Toy</p>
+                    <div class="h-1.5 w-20 bg-gray-900 mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="product-card flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center gap-x-4 mb-4">
+                            <div class="border-2 border-gray-900 p-3 bg-purple-50 text-brand-dark hard-shadow-sm">
+                                <i class="fas fa-gamepad text-3xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron i18n" data-i18n="game1_name">逃离甜瓜</h3>
+                        </div>
+                        <a href="/fled" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
+                            <span class="i18n" data-i18n="game1_btn">游玩逃离甜瓜</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                        </a>
+                    </div>
+
+                    <div class="product-card flex flex-col h-full" data-aos="fade-up" data-aos-delay="150">
+                        <div class="flex items-center gap-x-4 mb-4">
+                            <div class="border-2 border-gray-900 p-3 bg-blue-50 text-blue-600 hard-shadow-sm">
+                                <i class="fas fa-gamepad text-3xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron i18n" data-i18n="game2_name">贪吃蛇</h3>
+                        </div>
+                        <a href="/snake" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
+                            <span class="i18n" data-i18n="game2_btn">游玩贪吃蛇</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-footer-bg text-gray-900 border-t-4 border-brand-cyan">
+        <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="max-w-md">
+                <span class="text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default">
+                    Melon group
+                </span>
+                <p class="mt-4 text-sm text-gray-700">
+                    <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
+                    <a href="https://xs-s.cc.cd/" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">XS工作室</a>
+                    <span class="mx-1">/</span>
+                    <a href="https://web.msut.top/" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">MSUT甜瓜联合科技</a>
+                </p>
+            </div>
+            <div class="text-sm text-gray-600">
+                <span class="i18n" data-i18n="contact_email_label">联系邮箱：</span>
+                <a href="mailto:MeGr@foxmail.com" class="hover:text-brand-primary hover:underline font-mono">MeGr@foxmail.com</a>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8 border-t border-gray-200 flex flex-col items-center sm:flex-row sm:justify-between gap-4">
+            <p class="text-xs font-mono text-gray-500">
+                ©2026 甜瓜群组 | <a href="https://icp.gov.moe/?keyword=20260730" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">萌ICP备20260730号</a>
+            </p>
+            <div class="flex gap-x-6 text-gray-600 text-lg">
+                <a href="https://v.douyin.com/ccBn5tlwp10/" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-tiktok"></i></a>
+                <a href="https://v.kuaishou.com/JMPu7VqR" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fas fa-video"></i></a>
+                <a href="https://m.bilibili.com/space/3537124343154753?plat_id=1&share_from=space&share_medium=android&share_plat=android&share_session_id=925e61ad-ac3c-4aa7-806c-5f31b4f94892&share_source=COPY&share_tag=s_i&timestamp=1768564054&unique_k=DaXuGHA" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-bilibili"></i></a>
+                <a href="http://www.youtube.com/@%E7%94%9C%E7%93%9CGW" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/MelGroup" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
