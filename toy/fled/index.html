@@ -1,1 +1,55 @@
-
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>逃离甜瓜</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="screen">
+<canvas id="view"></canvas>
+<div id="scan"></div>
+<div id="vignette"></div>
+<div id="blood"></div>
+<div id="hud"><span class="recDot"></span><span>REC</span><span id="time">00:00</span></div>
+<div id="mapWrap"><div id="mapbox"><canvas id="map"></canvas></div><button id="mapToggle"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C8 2 4 5 4 10c0 5 7 12 8 12s8-7 8-12c0-5-4-8-8-8z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></svg></button></div>
+<div id="warn">它在你的附近</div>
+<div id="start">
+<div class="titleIcon" id="titleIcon"><img src="assets/melon icon.png" alt=""></div>
+<div class="title">逃 离 甜 瓜</div>
+<div class="sub">你被困在一个黑暗的迷宫中。<br>它正在靠近……<br>活下去，直到它抓住你。</div>
+<div class="setting">
+<label class="lab">灵敏度</label>
+<input type="range" id="sens" min="0.4" max="1.6" step="0.1" value="1">
+<div class="labVal" id="sensVal">1.0x</div>
+</div>
+<div class="setting">
+<label class="lab">玩家速度</label>
+<input type="range" id="pspeed" min="0.5" max="2" step="0.1" value="1">
+<div class="labVal" id="pspeedVal">1.0x</div>
+</div>
+<div class="setting">
+<label class="lab">甜瓜速度</label>
+<input type="range" id="mspeed" min="0.5" max="2" step="0.1" value="1">
+<div class="labVal" id="mspeedVal">1.0x</div>
+</div>
+<button class="btn" id="startBtn">开 始</button>
+<div class="hint">移动端：左下摇杆移动，摇杆拉满冲刺，其余区域左右滑动转向，右上角按钮切换地图<br>PC端：WASD 移动，按住 Shift 冲刺，Tap 切换地图，鼠标或方向键转向</div>
+<a class="ref" href="https://www.bilibili.com/toy/HorrorCow/index.html" target="_blank" rel="noopener">参考:https://www.bilibili.com/toy/HorrorCow/index.html</a>
+</div>
+<div id="over" class="hidden">
+<div class="big">你被抓住了</div>
+<div class="st">存活时间：<span id="survived">0</span> 秒</div>
+<div class="actions">
+<button class="btn" id="restartBtn">再来一次</button>
+<button class="btn" id="homeBtn">返回开始界面</button>
+</div>
+</div>
+<div id="staminaWrap"><span id="staminaTxt">体力:</span><div id="staminaTrack"><div id="staminaBar"></div></div></div>
+<div id="joystick"><div id="jbase"></div><div id="jknob"></div></div>
+</div>
+<script src="game.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
