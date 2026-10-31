@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#f5f5fa" />
+<title>Toy - Molss交易市场</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+<header class="topbar">
+    <div class="wallet-bar">
+        <span class="wallet-label"><i class="fa-solid fa-wallet"></i> 余额</span>
+        <span id="cashDisplay" class="wallet-val">800.00 Mels</span>
+    </div>
+</header>
+
+<main class="layout">
+    <div class="col-main">
+
+        <section class="panel">
+            <div class="panel-head">
+                <span><i class="fa-solid fa-arrow-right-arrow-left"></i>实时汇率</span>
+            </div>
+            <div class="panel-body">
+                <div class="price-block">
+                    <div id="rateDisplay" class="rate-main">45.30 Mels = 1 Molss</div>
+                </div>
+                <div class="stat-scroll">
+                    <div class="stat-chip"><span class="stat-key">最高</span><span id="highDisplay" class="stat-val">45.30</span></div>
+                    <div class="stat-chip"><span class="stat-key">最低</span><span id="lowDisplay" class="stat-val">45.30</span></div>
+                    <div class="stat-chip"><span class="stat-key">持仓量</span><span id="openInterestDisplay" class="stat-val">0.00</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-head">
+                <span><i class="fa-solid fa-chart-line"></i>价格走势</span>
+                <span class="panel-note">最近 2 分钟</span>
+            </div>
+            <div class="chart-scroll">
+                <div class="chart-wrap">
+                    <canvas id="chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-head">
+                <span><i class="fa-solid fa-clock-rotate-left"></i>交易记录</span>
+                <span class="panel-note">最近 20 条</span>
+            </div>
+            <div id="logList" class="log-list"></div>
+        </section>
+
+    </div>
+
+    <div class="col-side">
+
+        <section class="panel">
+            <div class="panel-head">
+                <span><i class="fa-solid fa-briefcase"></i>持仓</span>
+                <span class="panel-note">最多 5 个</span>
+            </div>
+            <div class="pos-scroll">
+                <div id="posBody" class="pos-track"></div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-head">
+                <span><i class="fa-solid fa-cart-plus"></i>下单</span>
+            </div>
+            <div class="panel-body">
+                <div class="side-tabs">
+                    <button type="button" id="tabLong" class="tab-btn is-active"><i class="fa-solid fa-arrow-up"></i>开多</button>
+                    <button type="button" id="tabShort" class="tab-btn"><i class="fa-solid fa-arrow-down"></i>开空</button>
+                </div>
+
+                <label class="field-label" for="amount">购买 Molss</label>
+                <input id="amount" type="number" inputmode="decimal" min="0" step="1" value="2" />
+                <div class="quick-grid">
+                    <button type="button" class="opt-btn is-active" data-amt="2">2</button>
+                    <button type="button" class="opt-btn" data-amt="5">5</button>
+                    <button type="button" class="opt-btn" data-amt="10">10</button>
+                    <button type="button" class="opt-btn" data-amt="max">最多</button>
+                </div>
+
+                <div class="field-label field-gap">杠杆倍数</div>
+                <div class="lev-grid">
+                    <button type="button" class="opt-btn is-active" data-lev="1">1x</button>
+                    <button type="button" class="opt-btn" data-lev="2">2x</button>
+                    <button type="button" class="opt-btn" data-lev="5">5x</button>
+                    <button type="button" class="opt-btn" data-lev="10">10x</button>
+                    <button type="button" class="opt-btn" data-lev="20">20x</button>
+                </div>
+
+                <div class="preview">
+                    <div class="preview-row"><span>保证金</span><span id="pvQty">0.00 Mels</span></div>
+                    <div class="preview-row"><span>仓位价值</span><span id="pvValue">0.00 Mels</span></div>
+                    <div class="preview-row"><span>手续费</span><span id="pvFee">0.00 Mels</span></div>
+                    <div class="preview-row"><span>强平价</span><span id="pvLiq">-- Mels</span></div>
+                </div>
+
+                <button type="button" id="submitBtn" class="btn-hard btn-submit"><i class="fa-solid fa-arrow-up"></i>开多 Molss</button>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<div id="addModal" class="modal-mask">
+    <div class="modal-card">
+        <div class="modal-head">
+            <span><i class="fa-solid fa-plus"></i>加仓</span>
+            <button type="button" id="modalClose" class="modal-x"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <div id="modalPosInfo" class="modal-info"></div>
+            <label class="field-label" for="addAmount">加仓数量 Molss</label>
+            <input id="addAmount" type="number" inputmode="decimal" min="0" step="1" value="2" />
+            <div class="preview">
+                <div class="preview-row"><span>将加仓</span><span id="mAddQty">2.00 Molss</span></div>
+                <div class="preview-row"><span>所需 Mels</span><span id="mAddCost">0.00 Mels</span></div>
+            </div>
+            <button type="button" id="addConfirm" class="btn-hard btn-submit"><i class="fa-solid fa-plus"></i>确认加仓</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
