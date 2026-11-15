@@ -1,100 +1,4 @@
 (function(){
-    const translations = {
-        zh: {
-            founded: '成立于2025年2月2日',
-            hero_line2: '《MELON SANDBOX》游戏群组',
-            hero_desc: '甜瓜群组是GW建立的《Melon Sandbox》游戏交流群组，专注于内容讨论、资源共享与技术交流等!',
-            join_group_btn: '加入群组',
-            visit_owner_homepage: '访问群主主页',
-            services_label: '[ Melon group ]',
-            melorce_name: 'Melorce',
-            services_title: '服务',
-            melorce_desc: '《Melon Sandbox》资源平台',
-            tag1: '游戏资源',
-            tag2: '内容宣传',
-            tag3: '游戏教程',
-            tag4: '芯片生成',
-            tag6: '甜瓜下载',
-            visit_melorce: '前往Melorce',
-            ai_name: 'Jelbe',
-            ai_desc: '《Melon Sandbox》AI',
-            ai_tag: 'AI',
-            visit_ai: '询问AI',
-            source_name: '源码服务',
-            source_desc: '甜瓜群组源码服务',
-            source_tag: '源码',
-            visit_source: '访问仓库',
-            toy_name: 'Toy',
-            toy_desc: '《Melon Sandbox》Toy',
-            toy_tag: 'Toy',
-            visit_toy: '前往Toy',
-            member_count_label: '[ 群组成员 ]',
-            days_since_label: '[ 成立天数 ]',
-            footer_partner_prefix: '合作伙伴：',
-            contact_email_label: '联系邮箱：',
-            join_group_title: '加入群组',
-            join_qq_group: '加入QQ群',
-            join_qq_channel: '加入QQ频道',
-            cancel: '取消'
-        },
-        ja: {
-            founded: '2025年2月2日設立',
-            hero_line2: '『MELON SANDBOX』ゲームグループ',
-            hero_desc: '甜瓜群组はGWが設立した『Melon Sandbox』ゲーム交流グループで、内容討論、リソース共有、技術交流などを中心に活動しています!',
-            join_group_btn: 'グループ参加',
-            visit_owner_homepage: 'グループオーナーのプロフィールへ行く',
-            services_label: '[ Melon group ]',
-            melorce_name: 'メロルセ',
-            services_title: 'サービス',
-            melorce_desc: '『Melon Sandbox』リソースプラットフォーム',
-            tag1: 'ゲームリソース',
-            tag2: 'コンテンツ宣伝',
-            tag3: 'ゲームチュートリアル',
-            tag4: 'チップ生成',
-            tag6: 'メロンダウンロード',
-            visit_melorce: 'メロルセへ',
-            ai_name: 'ジェルベ',
-            ai_desc: '『Melon Sandbox』AI',
-            ai_tag: 'AI',
-            visit_ai: 'AIに質問',
-            source_name: 'ソースコードサービス',
-            source_desc: '甜瓜群组ソースコードサービス',
-            source_tag: 'ソースコード',
-            visit_source: 'リポジトリへ',
-            toy_name: 'Toy',
-            toy_desc: '『Melon Sandbox』Toy',
-            toy_tag: 'Toy',
-            visit_toy: 'Toyへ',
-            member_count_label: '[ グループメンバー ]',
-            days_since_label: '[ 設立日数 ]',
-            footer_partner_prefix: 'パートナー：',
-            contact_email_label: '連絡先：',
-            join_group_title: 'グループ参加',
-            join_qq_group: 'QQグループ',
-            join_qq_channel: 'QQチャンネル',
-            cancel: 'キャンセル'
-        }
-    };
-
-    let currentLang = 'zh';
-    const langBtn = document.getElementById('langToggle');
-    
-    function updateUIText(lang) {
-        document.documentElement.lang = lang === 'zh' ? 'zh' : 'ja';
-        document.querySelectorAll('.i18n').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (key && translations[lang] && translations[lang][key]) {
-                el.textContent = translations[lang][key];
-            }
-        });
-        langBtn.textContent = lang === 'zh' ? '[ 日本語 ]' : '[ 简体中文 ]';
-    }
-
-    langBtn.addEventListener('click', () => {
-        currentLang = currentLang === 'zh' ? 'ja' : 'zh';
-        updateUIText(currentLang);
-    });
-
     AOS.init({
         duration: 600,
         once: true,
@@ -173,8 +77,6 @@
         statsObserver.observe(statsCard);
     }
 
-    updateUIText('zh');
-    
     window.openJoinModal = function() {
         document.getElementById('joinModal').style.display = 'flex';
     };

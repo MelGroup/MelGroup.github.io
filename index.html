@@ -39,15 +39,15 @@
 
     <div class="modal-overlay" id="joinModal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900 i18n" data-i18n="join_group_title">加入群组</h3>
+            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900">加入群组</h3>
             <div class="flex flex-col gap-3">
                 <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=wTnC7CeJNctwbnKDdsyumlI%2FEdtVEPubIHca46Zoouk03HI3ad1axArPdCA0vu4e&busi_data=eyJncm91cENvZGUiOiIxMDEzMDQxOTIzIiwidG9rZW4iOiJMNlFDeGJqa3pwUjVGQVU0TU9jV1AzN3hhRlBxSlQ4SEFSOVNjMTNZZ1NtRGtTRjhFVTBXQ0pGZ3VBYUxsTWVlIiwidWluIjoiMzE3NzQzNzMzMCJ9&data=AVV3gZuLEIAj8jWaQxzNVAnze36lpW37c1U0iHz57QNnyjfncvDsRgfgx1SPM9sPk_V17_ia3Gy2JPhdy1hFPA&svctype=4&tempid=h5_group_info" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
-                    <i class="fab fa-qq mr-2"></i> <span class="i18n" data-i18n="join_qq_group">加入QQ群</span>
+                    <i class="fab fa-qq mr-2"></i> <span>加入QQ群</span>
                 </a>
                 <a href="https://pd.qq.com/s/5thhxg0eg?b=9" target="_blank" class="btn-hard bg-brand-cyan text-white hover:bg-brand-cyan/90 text-center">
-                    <i class="fab fa-qq mr-2"></i> <span class="i18n" data-i18n="join_qq_channel">加入QQ频道</span>
+                    <i class="fab fa-qq mr-2"></i> <span>加入QQ频道</span>
                 </a>
-                <button onclick="closeModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900 i18n" data-i18n="cancel">取消</button>
+                <button onclick="closeModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900">取消</button>
             </div>
         </div>
     </div>
@@ -61,9 +61,9 @@
 </span>
             </div>
             <div class="flex lg:flex-1 lg:justify-end gap-x-4">
-                <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
-                    [ 日本語 ]
-                </button>
+                <a href="https://link3.cc/tianguaGW" target="_blank" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
+                    访问群主主页
+                </a>
             </div>
         </nav>
     </header>
@@ -72,23 +72,20 @@
         <section id="about" class="relative isolate px-6 lg:px-8 bg-gray-50 background-pattern border-b-2 border-gray-900">
             <div class="relative mx-auto max-w-4xl py-16 sm:py-20 lg:py-24 text-center">
                 <div class="mb-8 flex justify-center" data-aos="fade-down">
-                    <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide i18n" data-i18n="founded">
+                    <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide">
                         成立于2025年2月2日
                     </div>
                 </div>
                 <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase" data-aos="fade-up">
-                    <span class="text-brand-dark i18n" data-i18n="hero_line2">《MELON SANDBOX》游戏群组</span>
+                    <span class="text-brand-dark">《MELON SANDBOX》游戏群组</span>
                 </h1>
                 <p class="mt-8 text-lg font-medium text-gray-700 sm:text-xl leading-8 max-w-2xl mx-auto border-l-4 border-brand-cyan pl-6 text-left bg-white p-6 hard-shadow-brand" data-aos="fade-up" data-aos-delay="100">
-                    <span class="i18n" data-i18n="hero_desc">甜瓜群组是GW建立的《Melon Sandbox》游戏交流群组，专注于内容讨论、资源共享与技术交流等!</span>
+                    <span>甜瓜群组是GW建立的《Melon Sandbox》游戏交流群组，专注于内容讨论、资源共享与技术交流等!</span>
                 </p>
                 <div class="mt-12 flex items-center justify-center gap-x-6 flex-wrap gap-y-4" data-aos="fade-up" data-aos-delay="200">
                     <button onclick="openJoinModal()" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90">
-                        <i class="fas fa-user-plus mr-2"></i> <span class="i18n" data-i18n="join_group_btn">加入群组</span>
+                        <i class="fas fa-user-plus mr-2"></i> <span>加入群组</span>
                     </button>
-                    <a href="https://link3.cc/tianguaGW" target="_blank" class="btn-hard bg-brand-cyan text-white hover:bg-brand-cyan/90">
-                        <i class="fas fa-crown mr-2"></i> <span class="i18n" data-i18n="visit_owner_homepage">访问群主主页</span>
-                    </a>
                 </div>
             </div>
         </section>
@@ -96,8 +93,8 @@
         <section id="services" class="bg-white py-24 sm:py-32 border-b-2 border-gray-900">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-2xl text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan i18n" data-i18n="services_label">[ Melon group ]</h2>
-                    <p class="mt-2 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl font-orbitron i18n" data-i18n="services_title">服务</p>
+                    <h2 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-cyan">[ Melon group ]</h2>
+                    <p class="mt-2 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl font-orbitron">服务</p>
                     <div class="h-1.5 w-20 bg-gray-900 mx-auto mt-6"></div>
                 </div>
 
@@ -107,18 +104,18 @@
                             <div class="border-2 border-gray-900 p-3 bg-purple-50 text-brand-dark hard-shadow-sm">
                                 <i class="fas fa-cubes text-3xl"></i>
                             </div>
-                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron i18n" data-i18n="melorce_name">Melorce</h3>
+                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron">Melorce</h3>
                         </div>
-                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide i18n" data-i18n="melorce_desc">《Melon Sandbox》资源平台</p>
+                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide">《Melon Sandbox》资源平台</p>
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag1">游戏资源</span>
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag2">内容宣传</span>
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag3">游戏教程</span>
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag4">芯片生成</span>
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="tag6">甜瓜下载</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">游戏资源</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">内容宣传</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">游戏教程</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">芯片生成</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">甜瓜下载</span>
                         </div>
                         <a href="https://m.mgw.os.kg" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
-                            <span class="i18n" data-i18n="visit_melorce">前往Melorce</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                            <span>前往Melorce</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
 
@@ -127,14 +124,14 @@
                             <div class="border-2 border-gray-900 p-3 bg-blue-50 text-blue-600 hard-shadow-sm">
                                 <i class="fas fa-robot text-3xl"></i>
                             </div>
-                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron i18n" data-i18n="ai_name">Jelbe</h3>
+                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron">Jelbe</h3>
                         </div>
-                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide i18n" data-i18n="ai_desc">《Melon Sandbox》AI</p>
+                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide">《Melon Sandbox》AI</p>
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="ai_tag">AI</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">AI</span>
                         </div>
                         <a href="https://m.mgw.os.kg/AI" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
-                            <span class="i18n" data-i18n="visit_ai">询问AI</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                            <span>询问AI</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
 
@@ -143,14 +140,14 @@
                             <div class="border-2 border-gray-900 p-3 bg-green-50 text-green-600 hard-shadow-sm">
                                 <i class="fas fa-gamepad text-3xl"></i>
                             </div>
-                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron i18n" data-i18n="toy_name">Toy</h3>
+                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron">Toy</h3>
                         </div>
-                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide i18n" data-i18n="toy_desc">《Melon Sandbox》Toy</p>
+                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide">《Melon Sandbox》Toy</p>
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="toy_tag">Toy</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">Toy</span>
                         </div>
                            <a href="/toy" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
-                            <span class="i18n" data-i18n="visit_toy">前往Toy</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                            <span>前往Toy</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
 
@@ -159,14 +156,14 @@
                             <div class="border-2 border-gray-900 p-3 bg-orange-50 text-orange-600 hard-shadow-sm">
                                 <i class="fas fa-code text-3xl"></i>
                             </div>
-                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron i18n" data-i18n="source_name">源码服务</h3>
+                            <h3 class="text-2xl font-black tracking-tighter text-gray-900 font-orbitron">源码服务</h3>
                         </div>
-                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide i18n" data-i18n="source_desc">甜瓜群组源码服务</p>
+                        <p class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide">甜瓜群组源码服务</p>
                         <div class="flex flex-wrap gap-2 mb-6 text-xs font-bold text-brand-primary">
-                            <span class="bg-purple-50 border border-purple-200 px-3 py-1 i18n" data-i18n="source_tag">源码</span>
+                            <span class="bg-purple-50 border border-purple-200 px-3 py-1">源码</span>
                         </div>
                         <a href="https://github.com/MelGroup/MGservice-sourcecode" target="_blank" class="btn-hard bg-white text-gray-900 hover:bg-gray-50 text-center mt-auto">
-                            <span class="i18n" data-i18n="visit_source">访问仓库</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
+                            <span>访问仓库</span> <i class="fas fa-arrow-right ml-2 text-brand-primary"></i>
                         </a>
                     </div>
                 </div>
@@ -176,14 +173,14 @@
         <section class="py-16 bg-gray-50 background-pattern border-b-2 border-gray-900 relative">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div id="stats-card" class="mx-auto max-w-3xl text-center border-4 border-gray-900 p-10 bg-counter-bg text-gray-900 hover:-translate-y-1 transition-transform">
-                    <h2 class="text-sm font-mono font-bold uppercase tracking-widest text-brand-primary mb-4 i18n" data-i18n="member_count_label">
+                    <h2 class="text-sm font-mono font-bold uppercase tracking-widest text-brand-primary mb-4">
                         [ 群组成员 ]
                     </h2>
                     <div class="text-6xl md:text-8xl font-black tracking-tighter font-orbitron mb-6 text-brand-dark" id="member-counter">
                         0
                     </div>
                     <div class="mt-8 pt-4 border-t-2 border-dashed border-gray-400/30">
-                        <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-primary mb-2 i18n" data-i18n="days_since_label">[ 成立天数 ]</h3>
+                        <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-brand-primary mb-2">[ 成立天数 ]</h3>
                         <div class="text-5xl md:text-6xl font-black tracking-tighter font-orbitron text-brand-dark" id="days-counter">0</div>
                     </div>
                 </div>
@@ -198,14 +195,14 @@
                     Melon group
                 </span>
                 <p class="mt-4 text-sm text-gray-700">
-                    <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
+                    <span>合作伙伴：</span>
                     <a href="https://link3.cc/xsgzs" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">XS工作室</a>
                     <span class="mx-1">/</span>
                     <a href="https://web.msut.top/" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">MSUT甜瓜联合科技</a>
                 </p>
             </div>
             <div class="text-sm text-gray-600">
-                <span class="i18n" data-i18n="contact_email_label">联系邮箱：</span>
+                <span>联系邮箱：</span>
                 <a href="mailto:MeGr@foxmail.com" class="hover:text-brand-primary hover:underline font-mono">MeGr@foxmail.com</a>
             </div>
         </div>
