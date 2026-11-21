@@ -59,37 +59,32 @@
 
     <div class="modal-overlay" id="downloadModal" onclick="closeDownloadModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900 i18n" data-i18n="download_modal_title">下载MoFiger</h3>
+            <h3 class="text-xl font-black font-orbitron mb-4 text-gray-900">下载MoFiger</h3>
             <div class="flex flex-col gap-3">
-                <a href="https://web.msut.top/share/mofiger2026-10-18-1" target="_blank" class="btn-hard bg-yellow-400 text-black hover:bg-yellow-500 text-center">
-                    <i class="fas fa-download mr-2"></i> <span class="i18n" data-i18n="direct_download">MSUT</span>
+                <a href="https://xs.860980.xyz/api/mods/d11423c3-a0d4-49d9-8d37-419e1ed6d63e/file" target="_blank" class="btn-hard bg-yellow-400 text-black hover:bg-yellow-500 text-center">
+                    <i class="fas fa-download mr-2"></i> XS
                 </a>
                 <a href="https://github.com/MelGroup/MelGroup.github.io/tree/main/MoFiger/apk" target="_blank" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
                     <i class="fab fa-github mr-2"></i> GitHub
                 </a>
                 <a href="https://1819238185.share.123pan.cn/123pan/wyJ9jv-cH4Qh" target="_blank" class="btn-hard bg-brand-cyan text-white hover:bg-brand-cyan/90 text-center">
-                    <i class="fas fa-cloud mr-2"></i> <span class="i18n" data-i18n="pan123">123云盘</span>
+                    <i class="fas fa-cloud mr-2"></i> <span>123云盘</span>
                 </a>
-                <button onclick="closeDownloadModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900 i18n" data-i18n="cancel">取消</button>
+                <button onclick="closeDownloadModal()" class="mt-2 text-sm text-gray-500 hover:text-gray-900">取消</button>
             </div>
         </div>
     </div>
 
     <header class="sticky top-0 z-50 border-b-2 border-gray-900 bg-white/95 backdrop-blur-sm">
         <nav class="flex items-center justify-between p-4 lg:px-8 max-w-7xl mx-auto" aria-label="Global">
-            <div class="flex lg:flex-1">
-                <a href="https://MelGroup.github.io" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="-m-1.5 p-1.5 text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron inline-flex items-center gap-1 hover:text-brand-primary transition-colors no-underline">
-    甜瓜群组_MG
-    <img src="../MG.png" alt="MG" class="h-6 w-auto inline-block">
-</a>
+            <div class="flex lg:flex-1 items-center gap-1">
+                <span class="-m-1.5 p-1.5 text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron">马卡龙_MF</span>
+                <img src="MF.png" alt="MF" class="h-6 w-auto inline-block">
             </div>
             <div class="flex lg:flex-1 lg:justify-end gap-x-4">
-                <button id="langToggle" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
-                    [ 日本語 ]
-                </button>
+                <a href="http://mgw.os.kg/" target="_blank" rel="noopener noreferrer" class="btn-hard bg-brand-dark text-white font-mono uppercase !px-3 !py-1 text-xs shadow-[2px_2px_0px_0px_#00cec9] active:shadow-none">
+                    访问MG官网
+                </a>
             </div>
         </nav>
     </header>
@@ -98,19 +93,19 @@
         <section id="about" class="relative isolate px-6 lg:px-8 bg-gray-50 background-pattern border-b-2 border-gray-900">
             <div class="relative mx-auto max-w-4xl py-16 sm:py-20 lg:py-24 text-center">
                 <div class="mb-8 flex justify-center" data-aos="fade-down">
-                    <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide i18n" data-i18n="founded">
-                        MoFiger2026.10.18
+                    <div class="border-2 border-gray-900 bg-white px-4 py-1.5 text-sm font-mono font-bold text-gray-700 hard-shadow-sm uppercase tracking-wide">
+                        MoFiger2026.11.21
                     </div>
                 </div>
                 <h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl font-orbitron uppercase" data-aos="fade-up">
-                    <span class="text-brand-dark i18n" data-i18n="hero_line2">MoFiger</span>
+                    <span class="text-brand-dark">MoFiger</span>
                 </h1>
                 <p class="mt-8 text-lg font-medium text-gray-700 sm:text-xl leading-8 max-w-2xl mx-auto border-l-4 border-brand-cyan pl-6 text-left bg-white p-6 hard-shadow-brand" data-aos="fade-up" data-aos-delay="100">
-                    <span class="i18n" data-i18n="hero_desc">MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具、图芯工具等的APP!</span>
+                    <span>MoFiger——一款集合了Melorce资源列表、MSUT文件库及DSL工具、图芯工具等的APP!</span>
                 </p>
                 <div class="mt-12 flex items-center justify-center gap-x-6" data-aos="fade-up" data-aos-delay="200">
                     <button onclick="openDownloadModal()" class="btn-hard bg-brand-dark text-white hover:bg-brand-dark/90 text-center">
-                        <i class="fas fa-download mr-2"></i> <span class="i18n" data-i18n="download_btn">下载MoFiger</span>
+                        <i class="fas fa-download mr-2"></i> <span>下载MoFiger</span>
                     </button>
                 </div>
             </div>
@@ -121,18 +116,16 @@
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
             <div class="max-w-md">
                 <span class="text-2xl font-black tracking-tighter text-gray-900 uppercase font-orbitron cursor-default">
-                    Melon group
+                    MoFiger
                 </span>
                 <p class="mt-4 text-sm text-gray-700">
-                    <span class="i18n" data-i18n="footer_partner_prefix">合作伙伴：</span>
-                    <a href="https://link3.cc/xsgzs" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">XS工作室</a>
-                    <span class="mx-1">/</span>
-                    <a href="https://web.msut.top/" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">MSUT甜瓜联合科技</a>
+                    <span>开发者：</span>
+                    <a href="https://link3.cc/tianguaGW" target="_blank" class="font-bold hover:text-brand-primary underline decoration-brand-cyan decoration-2 underline-offset-4 transition">GW</a>
                 </p>
             </div>
             <div class="text-sm text-gray-600">
-                <span class="i18n" data-i18n="contact_email_label">联系邮箱：</span>
-                <a href="mailto:MeGr@foxmail.com" class="hover:text-brand-primary hover:underline font-mono">MeGr@foxmail.com</a>
+                <span>联系邮箱：</span>
+                <a href="mailto:3177437330@qq.com" class="hover:text-brand-primary hover:underline font-mono">3177437330@qq.com</a>
             </div>
         </div>
 
@@ -141,7 +134,7 @@
                 ©2026 甜瓜群组 | <a href="https://icp.gov.moe/?keyword=20260730" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">萌ICP备20260730号</a>
             </p>
             <div class="flex gap-x-6 text-gray-600 text-lg">
-                <a href="https://v.douyin.com/ccBn5tlwp10/" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-tiktok"></i></a>
+                <a href="https://v.douyin.com/SjOwXNTKxfo/" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-tiktok"></i></a>
                 <a href="https://v.kuaishou.com/JMPu7VqR" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fas fa-video"></i></a>
                 <a href="https://m.bilibili.com/space/3537124343154753?plat_id=1&share_from=space&share_medium=android&share_plat=android&share_session_id=925e61ad-ac3c-4aa7-806c-5f31b4f94892&share_source=COPY&share_tag=s_i&timestamp=1768564054&unique_k=DaXuGHA" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-bilibili"></i></a>
                 <a href="http://www.youtube.com/@%E7%94%9C%E7%93%9CGW" target="_blank" class="hover:text-brand-primary transition-colors"><i class="fab fa-youtube"></i></a>
