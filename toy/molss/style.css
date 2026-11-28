@@ -85,6 +85,17 @@ input {
     letter-spacing: 0.02em;
 }
 
+.bell-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    color: #ffd93b;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
 .layout {
     max-width: 1200px;
     margin: 1.25rem auto;
@@ -126,6 +137,30 @@ input {
 .panel-head > span:first-child i {
     margin-right: 0.45rem;
     color: var(--ink);
+}
+
+.panel-tools {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+}
+
+.chart-toggle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    padding: 0.15rem 0.55rem;
+    box-shadow: 2px 2px 0 0 var(--ink);
+    cursor: pointer;
+    transition: transform 120ms, box-shadow 120ms;
+}
+
+.chart-toggle:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
 }
 
 .panel-note {
@@ -240,6 +275,15 @@ input {
     -webkit-overflow-scrolling: touch;
 }
 
+.modal-log-card .modal-body {
+    padding: 0;
+}
+
+.modal-log-card .log-list {
+    padding: 0.75rem 1rem;
+    max-height: 60vh;
+}
+
 .log-list .pos-empty {
     min-height: 56px;
     padding: 0.75rem 0;
@@ -283,6 +327,10 @@ input {
 }
 
 .log-type.close {
+    color: var(--brand-dark);
+}
+
+.log-type.add {
     color: var(--brand-dark);
 }
 
@@ -387,12 +435,25 @@ input {
     border-right: 2px solid var(--line);
 }
 
+.pos-cell:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
 .pos-cell .act-add, .pos-cell .act-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     border: 2px solid var(--ink);
     background: var(--paper);
-    font-size: 0.72rem;
-    padding: 0.28rem 0.45rem;
-    margin: 0 0.15rem;
+    font-size: 0.8rem;
     box-shadow: 2px 2px 0 0 var(--ink);
     transition: transform 120ms, box-shadow 120ms;
 }
@@ -552,6 +613,32 @@ input {
     font-weight: 700;
 }
 
+.preview-total {
+    border-top: 1px dashed var(--muted);
+    margin-top: 0.35rem;
+    padding-top: 0.45rem;
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.preview-total span {
+    color: var(--ink);
+}
+
+.preview-hint {
+    font-size: 0.72rem;
+    color: var(--muted);
+}
+
+.preview-hint:empty {
+    display: none;
+}
+
+.preview-hint.is-error {
+    color: var(--rose);
+    font-weight: 700;
+}
+
 .btn-hard {
     border: 3px solid var(--ink);
     background: var(--paper);
@@ -615,6 +702,11 @@ input {
     transform: scale(1) translateY(0);
 }
 
+.modal-mask.show .modal-card.modal-log-card {
+    box-shadow: none;
+    max-width: 460px;
+}
+
 .modal-head {
     display: flex;
     align-items: center;
@@ -630,18 +722,13 @@ input {
 }
 
 .modal-x {
-    border: 2px solid var(--ink);
-    background: var(--paper);
-    width: 28px;
-    height: 28px;
-    font-size: 0.85rem;
-    box-shadow: 2px 2px 0 0 var(--ink);
-    transition: transform 120ms, box-shadow 120ms;
-}
-
-.modal-x:active {
-    transform: translate(2px, 2px);
-    box-shadow: none;
+    background: none;
+    border: none;
+    padding: 4px;
+    font-size: 1.05rem;
+    line-height: 1;
+    color: var(--ink);
+    cursor: pointer;
 }
 
 .modal-body {
